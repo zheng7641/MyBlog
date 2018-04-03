@@ -5,12 +5,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("test")
+@RequestMapping("test2")
 public class TestController {
 
     @RequestMapping("test1")
-    @ResponseBody
     public String Test() {
-        return "aaa";
+        System.out.println("test111");
+        return "index.html";
+
     }
 }
