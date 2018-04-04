@@ -8,10 +8,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("test2")
-public class TestController {
+@RequestMapping("/")
+public class IndexController {
 
-    @RequestMapping("test1")
+    @RequestMapping("")
     public String Test(ModelMap model) {
         System.out.println("test111");
         Map<String, String> result = new HashMap<String, String>();

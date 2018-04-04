@@ -62,11 +62,11 @@ a:hover, a:focus {
 
 body {
 	color: #444;
-	font-family: 'Lato', sans-serif;
+	font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
 }
 
 p {
-	font-family: 'Ubuntu', sans-serif;
+	font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
 	font-weight: 400;
 	word-spacing: 1px;
 	letter-spacing: 0.01em;
@@ -124,7 +124,7 @@ figure {
 
 .logo h1 {
 	margin: 0;
-	font-family: 'Lato', sans-serif;
+	font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
 	font-weight: 300;
 }
 
@@ -141,7 +141,7 @@ figure {
 	color: #000000 !important;
 	padding: 0 0 5px 0 !important;
 	margin-right: 30px;
-	font-family: 'Lato', sans-serif;
+	font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
 	font-weight: 300;
 	font-size: 24px;
 }
@@ -259,7 +259,7 @@ figure {
  */
 
 .read-more {
-	font-family: 'Ubuntu', sans-serif;
+	font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
 	font-weight: 400;
 	word-spacing: 1px;
 	letter-spacing: 0.01em;
@@ -370,7 +370,7 @@ figure {
 
 .widget-recent-posts ul li::before {
     content: '\f3d3';
-    font-family: "Ionicons";
+	font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
     position: absolute;
     left: -17px;
     top: 3px;
@@ -393,7 +393,7 @@ figure {
 
 .widget-archives ul li::before {
     content: '\f3f3';
-    font-family: "Ionicons";
+	font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
     position: absolute;
     left: -25px;
     top: 1px;
@@ -416,7 +416,7 @@ figure {
 
 .widget-category ul li::before {
     content: '\f3fe';
-    font-family: "Ionicons";
+	font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
     position: absolute;
     left: -25px;
     top: 1px;
@@ -429,12 +429,17 @@ figure {
  */
 
 #site-footer {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	min-height: 50px;
 	padding-top: 10px;
 	padding: 0 0 1.5em 0;
 }
 
 .copyright {
-	text-align: center;
+	text-align: left;
 	padding-top: 1em;
 	margin: 0;
 	border-top: 1px solid #eee;
