@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zheng.mapper.TagMapper">
+  <resultMap id="BaseResultMap" type="com.zheng.entity.Tag">
+    <id column="tagid" jdbcType="INTEGER" property="tagid" />
+    <result column="tagname" jdbcType="VARCHAR" property="tagname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tagid, tagname
+  </sql>
+  
+  <select id="selectListByBlogId" parameterType="java.lang.Integer" resultType="String">
+  	SELECT t.tagname
+  	FROM blog b,tag t,tag_blog tb
+  	WHERE b.blogid = tb.blogid
+  	AND t.tagid = tb.tagid
+  	AND b.blogid=#{blogid}
+  </select>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tag
+    where tagid = #{tagid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tag
+    where tagid = #{tagid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zheng.entity.Tag">
+    insert into tag (tagid, tagname)
+    values (#{tagid,jdbcType=INTEGER}, #{tagname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zheng.entity.Tag">
+    insert into tag
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tagid != null">
+        tagid,
+      </if>
+      <if test="tagname != null">
+        tagname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tagid != null">
+        #{tagid,jdbcType=INTEGER},
+      </if>
+      <if test="tagname != null">
+        #{tagname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zheng.entity.Tag">
+    update tag
+    <set>
+      <if test="tagname != null">
+        tagname = #{tagname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tagid = #{tagid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zheng.entity.Tag">
+    update tag
+    set tagname = #{tagname,jdbcType=VARCHAR}
+    where tagid = #{tagid,jdbcType=INTEGER}
+  </update>
+</mapper>
