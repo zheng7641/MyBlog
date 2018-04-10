@@ -1,4 +1,4 @@
-package com.zheng.dao.impl;
+package com.zheng.dao;
 
 import com.zheng.dao.BlogDAO;
 import com.zheng.entity.Blog;
@@ -8,14 +8,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BlogDAOImpl implements BlogDAO {
+public class BlogDAOImpl implements BlogDAO{
 
     @Autowired
-    @Qualifier("BlogMapper")
     private BlogMapper blogMapper;
 
-    @Override
     public Blog getBlogById(int id) {
-        return blogMapper.selectByPrimaryKey(id);
+        return new Blog();
+//        return blogMapper.selectByPrimaryKey(id);
     }
 }

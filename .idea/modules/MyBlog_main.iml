@@ -27,7 +27,7 @@
           <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/../../src/main/webapp/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
-          <root url="file://E:\ideaworkspace20180402\MyBlog\src\main\webapp" relative="/" />
+          <root url="file://D:\JetBrains\workspace20180326\MyBlog\MyBlog\src\main\webapp" relative="/" />
         </webroots>
       </configuration>
     </facet>
@@ -50,6 +50,8 @@
     <orderEntry type="library" name="Gradle: org.springframework:spring-tx:4.2.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-beans:4.2.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-test:4.2.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.mybatis:mybatis:3.4.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.mybatis:mybatis-spring:1.3.1" level="project" />
     <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:5.1.38" level="project" />
     <orderEntry type="library" name="Gradle: junit:junit:4.12" level="project" />
     <orderEntry type="library" name="Gradle: javax.servlet:jstl:1.2" level="project" />
