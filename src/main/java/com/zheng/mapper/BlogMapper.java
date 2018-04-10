@@ -3,13 +3,13 @@ package com.zheng.mapper;
 import com.zheng.entity.Blog;
 
 public interface BlogMapper {
-    int deleteByPrimaryKey(Integer blogid);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(Blog record);
 
     int insertSelective(Blog record);
 
-    Blog selectByPrimaryKey(Integer blogid);
+    Blog selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Blog record);
 

@@ -1,6 +1,6 @@
 package com.zheng.service;
 
-import com.zheng.dao.BlogDAOImpl;
+import com.zheng.dao.impl.BlogDAOImpl;
 import com.zheng.entity.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,8 +11,8 @@ public class BlogService {
 	@Autowired
 	private BlogDAOImpl blogDAOImpl ;
 
-	public Blog selectByPrimaryKey(int blogId){
-		Blog blog = blogDAOImpl.getBlogById(blogId);
+	public Blog selectByPrimaryKey(int id){
+		Blog blog = blogDAOImpl.getBlogById(id);
 		if(blog==null){
 			return null;
 		}

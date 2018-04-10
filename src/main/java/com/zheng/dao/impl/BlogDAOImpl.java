@@ -1,4 +1,4 @@
-package com.zheng.dao;
+package com.zheng.dao.impl;
 
 import com.zheng.dao.BlogDAO;
 import com.zheng.entity.Blog;
@@ -14,7 +14,6 @@ public class BlogDAOImpl implements BlogDAO{
     private BlogMapper blogMapper;
 
     public Blog getBlogById(int id) {
-        return new Blog();
-//        return blogMapper.selectByPrimaryKey(id);
+        return blogMapper.selectByPrimaryKey(id);
     }
 }

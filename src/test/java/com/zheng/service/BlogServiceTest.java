@@ -27,6 +27,6 @@ public class BlogServiceTest {
     @Test
     public void selectByPrimaryKey() {
         Blog blog = blogService.selectByPrimaryKey(1);
-        System.out.println("1");
+        System.out.println(blog);
     }
 }

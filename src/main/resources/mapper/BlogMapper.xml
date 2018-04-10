@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zheng.mybatis.BlogMapper">
+<mapper namespace="com.zheng.mapper.BlogMapper">
 	<resultMap id="BaseResultMap" type="com.zheng.entity.Blog">
-		<id column="blogid" jdbcType="INTEGER" property="blogid" />
+		<id column="id" jdbcType="INTEGER" property="id" />
 		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
 		<result column="title" jdbcType="VARCHAR" property="title" />
 		<result column="author" jdbcType="VARCHAR" property="author" />
@@ -13,7 +13,7 @@
 		<result column="content" jdbcType="LONGVARCHAR" property="content" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		blogid, create_time, title, author, update_time
+		id, create_time, title, author, update_time
 	</sql>
 	<sql id="Blob_Column_List">
 		content
@@ -25,17 +25,17 @@
 		,
 		<include refid="Blob_Column_List" />
 		from blog
-		where blogid = #{blogid,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from blog
-		where blogid = #{blogid,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.zheng.entity.Blog">
-		insert into blog (blogid, create_time, title,
+		insert into blog (id, create_time, title,
 		author, update_time, content
 		)
-		values (#{blogid,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+		values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
 		#{title,jdbcType=VARCHAR},
 		#{author,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
 		)
@@ -43,8 +43,8 @@
 	<insert id="insertSelective" parameterType="com.zheng.entity.Blog">
 		insert into blog
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="blogid != null">
-				blogid,
+			<if test="id != null">
+				id,
 			</if>
 			<if test="createTime != null">
 				create_time,
@@ -63,8 +63,8 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="blogid != null">
-				#{blogid,jdbcType=INTEGER},
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
 			</if>
 			<if test="createTime != null">
 				#{createTime,jdbcType=TIMESTAMP},
@@ -102,7 +102,7 @@
 				content = #{content,jdbcType=LONGVARCHAR},
 			</if>
 		</set>
-		where blogid = #{blogid,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zheng.entity.Blog">
 		update blog
@@ -111,7 +111,7 @@
 		author = #{author,jdbcType=VARCHAR},
 		update_time = #{updateTime,jdbcType=TIMESTAMP},
 		content = #{content,jdbcType=LONGVARCHAR}
-		where blogid = #{blogid,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.zheng.entity.Blog">
 		update blog
@@ -119,6 +119,6 @@
 		title = #{title,jdbcType=VARCHAR},
 		author = #{author,jdbcType=VARCHAR},
 		update_time = #{updateTime,jdbcType=TIMESTAMP}
-		where blogid = #{blogid,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
 	</update>
 </mapper>
