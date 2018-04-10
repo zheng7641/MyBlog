@@ -1,5 +1,6 @@
 package com.zheng.service;
 
+import com.zheng.dao.BlogDAO;
 import com.zheng.entity.Blog;
 import org.junit.After;
 import org.junit.Before;
@@ -14,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class BlogServiceTest {
 
     @Autowired
-    private BlogService blogService;
+    private BlogDAO blogDao;
 
     @Before
     public void setUp() throws Exception {
@@ -26,7 +27,7 @@ public class BlogServiceTest {
 
     @Test
     public void selectByPrimaryKey() {
-        Blog blog = blogService.selectByPrimaryKey(1);
-        System.out.println(blog);
+        Blog byUid = blogDao.getByUid("1");
+        System.out.println(byUid);
     }
 }

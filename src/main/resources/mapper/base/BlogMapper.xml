@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zheng.mapper.BlogMapper">
+	<resultMap id="Blog_ResultMap" type="com.zheng.entity.Blog">
+		<id column="id" property="id" />
+		<result column="title" property="title" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="content" property="content" />
+		<result column="tag_name" property="tagName" />
+	</resultMap>
+
+	<sql id="Blog_Column_List">
+		id,
+		title,
+		create_time,
+		update_time,
+		content,
+		tag_name
+	</sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.zheng.entity.Blog" >
+		insert into blog (
+			id,
+			title,
+			create_time,
+			update_time,
+			content,
+			tag_name
+		)
+		values (
+			#{id},
+			#{title},
+			#{createTime},
+			#{updateTime},
+			#{content},
+			#{tagName}
+		)
+	</insert>
+
+	<insert id="insertBatch" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List" >
+		insert into blog (
+			id,
+			title,
+			create_time,
+			update_time,
+			content,
+			tag_name
+		)
+		values 
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		  (
+			#{item.id},
+			#{item.title},
+			#{item.createTime},
+			#{item.updateTime},
+			#{item.content},
+			#{item.tagName}
+		  )
+		</foreach>
+	</insert>
+
+	<delete id="deleteByUid" parameterType="java.lang.String">
+		delete from blog where uid = #{uid}
+	</delete>
+
+	<update id="updateByUid" parameterType="com.zheng.entity.Blog">
+		update blog
+			<set>
+				<if test="title != null">
+					title = #{title},
+				</if>
+				<if test="updateTime != null">
+					update_time = #{updateTime},
+				</if>
+				<if test="content != null">
+					content = #{content},
+				</if>
+				<if test="tagName != null">
+					tag_name = #{tagName}
+				</if>
+			</set>
+		where uid = #{uid}
+	</update>
+	
+	<update id="updateByProperty" >
+		update blog
+			set 
+		<choose>
+			<when test="property=='title'">
+				title = #{value}
+			</when>
+			<when test="property=='createTime'">
+				create_time = #{value}
+			</when>
+			<when test="property=='updateTime'">
+				update_time = #{value}
+			</when>
+			<when test="property=='content'">
+				content = #{value}
+			</when>
+			<when test="property=='tagName'">
+				tag_name = #{value}
+			</when>
+		 </choose>
+		where uid = #{uid}
+	</update>
+
+	<update id="updateBatchByUid" parameterType="java.util.List" >
+		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
+			update blog
+			<set>
+				<if test="item.title != null">
+					title = #{item.title},
+				</if>
+				<if test="item.updateTime != null">
+					update_time = #{item.updateTime},
+				</if>
+				<if test="item.content != null">
+					content = #{item.content},
+				</if>
+				<if test="item.tagName != null">
+					tag_name = #{item.tagName}
+				</if>
+		    </set>
+		     	where uid = #{item.uid}
+		 </foreach>		 
+	</update>
+	
+	<select id="getByUid"  parameterType="java.lang.String" resultMap="Blog_ResultMap">
+		select
+			<include refid="Blog_Column_List" />
+			from blog
+		where uid = #{uid}
+	</select>
+	
+	<select id="getCount" parameterType="com.zheng.entity.Blog" resultType="int" >
+		select
+			count(id)
+			from blog
+		 <where>
+			<if test="id != null">
+				and id = #{id}
+			</if>
+			<if test="title != null">
+				and title = #{title}
+			</if>
+			<if test="createTime != null">
+				and create_time = #{createTime}
+			</if>
+			<if test="updateTime != null">
+				and update_time = #{updateTime}
+			</if>
+			<if test="content != null">
+				and content = #{content}
+			</if>
+			<if test="tagName != null">
+				and tag_name = #{tagName}
+			</if>
+		 </where>
+	</select>
+
+	<select id="findByExample" parameterType="map" resultMap="Blog_ResultMap" >
+		select
+			<include refid="Blog_Column_List" />
+			from blog
+		 <where>
+			<if test="entity.id != null">
+				and id = #{entity.id}
+			</if>
+			<if test="entity.title != null">
+				and title = #{entity.title}
+			</if>
+			<if test="entity.createTime != null">
+				and create_time = #{entity.createTime}
+			</if>
+			<if test="entity.updateTime != null">
+				and update_time = #{entity.updateTime}
+			</if>
+			<if test="entity.content != null">
+				and content = #{entity.content}
+			</if>
+			<if test="entity.tagName != null">
+				and tag_name = #{entity.tagName}
+			</if>
+		 </where>
+		 <include refid="BaseSql.sqlEnd"/>			 
+	</select>
+
+</mapper>

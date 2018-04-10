@@ -1,19 +1,24 @@
 package com.zheng.dao.impl;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Repository;
+
 import com.zheng.dao.BlogDAO;
-import com.zheng.entity.Blog;
+import com.zheng.base.BaseDAOImpl;
+import com.zheng.base.BaseMapper;
 import com.zheng.mapper.BlogMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import com.zheng.entity.Blog;
 
-@Component
-public class BlogDAOImpl implements BlogDAO{
+@Repository
+public class BlogDAOImpl extends BaseDAOImpl<Blog,String> implements BlogDAO {
 
-    @Autowired
-    private BlogMapper blogMapper;
+	@Resource
+	private BlogMapper blogMapper;
 
-    public Blog getBlogById(int id) {
-        return blogMapper.selectByPrimaryKey(id);
-    }
+	@Override
+	public BaseMapper<Blog, String> getMapper() {
+		return blogMapper;
+	}
+
 }
