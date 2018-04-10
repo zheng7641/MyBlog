@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <!-- 制定mysql的驱动包的路径 千万别放中文路径下 -->
+    <classPathEntry location="C:\Users\zheng7641\.gradle\caches\modules-2\files-2.1\mysql\mysql-connector-java\5.1.38\dbbd7cd309ce167ec8367de4e41c63c2c8593cc5\mysql-connector-java-5.1.38.jar" />
+
+    <!-- 配置数据源和生成的代码所存放的位置 -->
+    <context id="mybaits" targetRuntime="MyBatis3">
+        <!-- 是否去除自动生成的注释 true：是 ： false:否 --> 
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" 
+                        connectionURL="jdbc:mysql://localhost:3306/MyBlog?characterEncoding=utf-8"
+                        userId="root" 
+                        password="" />
+
+        <javaTypeResolver>
+            <!-- 
+                true：使用BigDecimal对应DECIMAL和 NUMERIC数据类型
+                false：默认,
+                    scale>0;length>18：使用BigDecimal;
+                    scale=0;length[10,18]：使用Long；
+                    scale=0;length[5,9]：使用Integer；
+                    scale=0;length<5：使用Short；
+             -->
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+
+        <!-- 生成模型的包名和位置--> 
+        <javaModelGenerator targetPackage="com.zheng.entity" targetProject="src/main/java">
+            <!-- 是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="true"/>
+            <!-- 从数据库返回的值被清理前后的空格  -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成映射文件的包名和位置-->
+        <sqlMapGenerator targetPackage="com.zheng.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 生成DAO的包名和位置-->     
+        <javaClientGenerator targetPackage="com.zheng.dao" targetProject="src/main/java" type="XMLMAPPER" >
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->  
+        <table tableName="blog" domainObjectName="Blog"
+            enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false" />
+        </table>
+        <!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->  
+        <table tableName="config" domainObjectName="Config" 
+            enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false" />
+        </table>
+        <!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->  
+        <table tableName="discuss" domainObjectName="Discuss" 
+            enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false" />
+        </table>
+        <!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->  
+        <table tableName="image" domainObjectName="Image" 
+            enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false" />
+        </table>
+        <!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->  
+        <table tableName="introduce" domainObjectName="Introduce" 
+            enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false" />
+        </table>
+        <!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->  
+        <table tableName="tag" domainObjectName="Tag" 
+            enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false" />
+        </table>
+        <!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->  
+        <table tableName="tag_blog" domainObjectName="TagBlog" 
+            enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false" />
+        </table>
+    </context>
+</generatorConfiguration>
