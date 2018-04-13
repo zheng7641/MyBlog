@@ -32,8 +32,13 @@
         <property name="dataSource" ref="dataSource"/>
         <!-- mybatis配置文件 -->
         <property name="configLocation" value="classpath:mybatis-config.xml"></property>
-        <!-- 自动扫描mappers.xml文件 -->
-        <property name="mapperLocations" value="classpath:mapper/*.xml"></property>
+        <!-- 显式指定Mapper文件位置 -->
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:/mapper/**/*Mapper.xml</value>
+                <value>classpath:/mybatis/BaseSqlMapper.xml</value>
+            </list>
+        </property>
     </bean>
 
     <!--DAO接口所在包名，Spring会自动查找其下的类-->

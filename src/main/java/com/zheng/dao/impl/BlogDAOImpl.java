@@ -2,6 +2,7 @@ package com.zheng.dao.impl;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.zheng.dao.BlogDAO;
@@ -13,7 +14,7 @@ import com.zheng.entity.Blog;
 @Repository
 public class BlogDAOImpl extends BaseDAOImpl<Blog,String> implements BlogDAO {
 
-	@Resource
+	@Autowired
 	private BlogMapper blogMapper;
 
 	@Override
@@ -21,4 +22,8 @@ public class BlogDAOImpl extends BaseDAOImpl<Blog,String> implements BlogDAO {
 		return blogMapper;
 	}
 
+	@Override
+	public String hello() {
+		return "hellow";
+	}
 }

@@ -31,7 +31,6 @@ public class BaseBlog extends BaseBean implements Serializable {
      * 博客内容
      */
     private String content;
-    private String tagName;
 
 
     /**
@@ -104,11 +103,15 @@ public class BaseBlog extends BaseBean implements Serializable {
         this.content = content;
     }
 
-    public String getTagName() {
-        return this.tagName;
-    }
 
-    public void setTagName(String tagName) {
-        this.tagName = tagName;
+    @Override
+    public String toString() {
+        return "BaseBlog{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", content='" + content + '\'' +
+                '}';
     }
 }

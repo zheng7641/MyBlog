@@ -12,6 +12,7 @@ import java.util.Map;
 @RequestMapping("/")
 public class IndexController {
 
+
     @RequestMapping("")
     @ResponseBody
     public String Test(ModelMap model) {

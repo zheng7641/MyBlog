@@ -62,7 +62,7 @@
 	</insert>
 
 	<delete id="deleteByUid" parameterType="java.lang.String">
-		delete from blog where uid = #{uid}
+		delete from blog where id = #{id}
 	</delete>
 
 	<update id="updateByUid" parameterType="com.zheng.entity.Blog">
@@ -81,7 +81,7 @@
 					tag_name = #{tagName}
 				</if>
 			</set>
-		where uid = #{uid}
+		where id = #{id}
 	</update>
 	
 	<update id="updateByProperty" >
@@ -104,7 +104,7 @@
 				tag_name = #{value}
 			</when>
 		 </choose>
-		where uid = #{uid}
+		where id = #{id}
 	</update>
 
 	<update id="updateBatchByUid" parameterType="java.util.List" >
@@ -124,7 +124,7 @@
 					tag_name = #{item.tagName}
 				</if>
 		    </set>
-		     	where uid = #{item.uid}
+		     	where id = #{item.id}
 		 </foreach>		 
 	</update>
 	
@@ -132,7 +132,7 @@
 		select
 			<include refid="Blog_Column_List" />
 			from blog
-		where uid = #{uid}
+		where id = #{id}
 	</select>
 	
 	<select id="getCount" parameterType="com.zheng.entity.Blog" resultType="int" >

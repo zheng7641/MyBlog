@@ -17,7 +17,7 @@ import java.util.Map;
  * 基础DB访问类
  * @param <T>
  */
-public abstract class BaseDAOImpl<T extends BaseBean,K> implements BaseDAO<T,K> {
+public abstract class BaseDAOImpl<T extends BaseBean,K> implements BaseDAO<T,K>{
 	public final Logger logger = LoggerFactory.getLogger(getClass());
 
 	public abstract BaseMapper<T,K> getMapper();

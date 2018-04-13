@@ -2,6 +2,7 @@ package com.zheng.service;
 
 import com.zheng.dao.BlogDAO;
 import com.zheng.entity.Blog;
+import com.zheng.mapper.BlogMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +16,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class BlogServiceTest {
 
     @Autowired
-    private BlogDAO blogDao;
+    private BlogMapper blogMapper;
+
+    @Autowired
+    private BlogDAO blogDAO;
 
     @Before
     public void setUp() throws Exception {
@@ -27,7 +31,10 @@ public class BlogServiceTest {
 
     @Test
     public void selectByPrimaryKey() {
-        Blog byUid = blogDao.getByUid("1");
+        Blog byUid = blogMapper.getByUid("1");
+//        Blog byUid = new Blog();
         System.out.println(byUid);
+
+        System.out.println(blogDAO.hello());
     }
 }
