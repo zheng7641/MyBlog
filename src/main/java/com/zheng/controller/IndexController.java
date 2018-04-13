@@ -1,5 +1,8 @@
 package com.zheng.controller;
 
+import com.zheng.entity.Blog;
+import com.zheng.service.BlogService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,15 +15,16 @@ import java.util.Map;
 @RequestMapping("/")
 public class IndexController {
 
+    //http://localhost:8080/
+
+    @Autowired
+    private BlogService blogService;
 
     @RequestMapping("")
     @ResponseBody
     public String Test(ModelMap model) {
-        System.out.println("test111");
-        Map<String, String> result = new HashMap<String, String>();
-        result.put("blog","blog1");
-        model.addAllAttributes(result);
-        return "success";
+        Blog blog = blogService.getBlog();
+        return blog.toString();
 
     }
 }

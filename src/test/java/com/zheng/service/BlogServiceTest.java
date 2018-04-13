@@ -21,6 +21,9 @@ public class BlogServiceTest {
     @Autowired
     private BlogDAO blogDAO;
 
+    @Autowired
+    private BlogService blogService;
+
     @Before
     public void setUp() throws Exception {
     }
@@ -36,5 +39,11 @@ public class BlogServiceTest {
         System.out.println(byUid);
 
         System.out.println(blogDAO.hello());
+    }
+
+    @Test
+    public void getBlog() {
+        Blog blog = blogService.getBlog();
+        System.out.println(blog);
     }
 }
