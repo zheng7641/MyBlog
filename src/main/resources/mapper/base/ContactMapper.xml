@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zheng.mapper.ContactMapper">
+	<resultMap id="Contact_ResultMap" type="com.zheng.entity.Contact">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="email" property="email" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+	</resultMap>
+
+	<sql id="Contact_Column_List">
+		id,
+		name,
+		email,
+		title,
+		content
+	</sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.zheng.entity.Contact" >
+		insert into contact (
+			id,
+			name,
+			email,
+			title,
+			content
+		)
+		values (
+			#{id},
+			#{name},
+			#{email},
+			#{title},
+			#{content}
+		)
+	</insert>
+
+	<insert id="insertBatch" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List" >
+		insert into contact (
+			id,
+			name,
+			email,
+			title,
+			content
+		)
+		values 
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		  (
+			#{item.id},
+			#{item.name},
+			#{item.email},
+			#{item.title},
+			#{item.content}
+		  )
+		</foreach>
+	</insert>
+
+	<delete id="deleteByUid" parameterType="java.lang.String">
+		delete from contact where uid = #{uid}
+	</delete>
+
+	<update id="updateByUid" parameterType="com.zheng.entity.Contact">
+		update contact
+			<set>
+				<if test="name != null">
+					name = #{name},
+				</if>
+				<if test="email != null">
+					email = #{email},
+				</if>
+				<if test="title != null">
+					title = #{title},
+				</if>
+				<if test="content != null">
+					content = #{content}
+				</if>
+			</set>
+		where uid = #{uid}
+	</update>
+	
+	<update id="updateByProperty" >
+		update contact
+			set 
+		<choose>
+			<when test="property=='name'">
+				name = #{value}
+			</when>
+			<when test="property=='email'">
+				email = #{value}
+			</when>
+			<when test="property=='title'">
+				title = #{value}
+			</when>
+			<when test="property=='content'">
+				content = #{value}
+			</when>
+		 </choose>
+		where uid = #{uid}
+	</update>
+
+	<update id="updateBatchByUid" parameterType="java.util.List" >
+		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
+			update contact
+			<set>
+				<if test="item.name != null">
+					name = #{item.name},
+				</if>
+				<if test="item.email != null">
+					email = #{item.email},
+				</if>
+				<if test="item.title != null">
+					title = #{item.title},
+				</if>
+				<if test="item.content != null">
+					content = #{item.content}
+				</if>
+		    </set>
+		     	where uid = #{item.uid}
+		 </foreach>		 
+	</update>
+	
+	<select id="getByUid"  parameterType="java.lang.String" resultMap="Contact_ResultMap">
+		select
+			<include refid="Contact_Column_List" />
+			from contact
+		where uid = #{uid}
+	</select>
+	
+	<select id="getCount" parameterType="com.zheng.entity.Contact" resultType="int" >
+		select
+			count(id)
+			from contact
+		 <where>
+			<if test="id != null">
+				and id = #{id}
+			</if>
+			<if test="name != null">
+				and name = #{name}
+			</if>
+			<if test="email != null">
+				and email = #{email}
+			</if>
+			<if test="title != null">
+				and title = #{title}
+			</if>
+			<if test="content != null">
+				and content = #{content}
+			</if>
+		 </where>
+	</select>
+
+	<select id="findByExample" parameterType="map" resultMap="Contact_ResultMap" >
+		select
+			<include refid="Contact_Column_List" />
+			from contact
+		 <where>
+			<if test="entity.id != null">
+				and id = #{entity.id}
+			</if>
+			<if test="entity.name != null">
+				and name = #{entity.name}
+			</if>
+			<if test="entity.email != null">
+				and email = #{entity.email}
+			</if>
+			<if test="entity.title != null">
+				and title = #{entity.title}
+			</if>
+			<if test="entity.content != null">
+				and content = #{entity.content}
+			</if>
+		 </where>
+		 <include refid="BaseSql.sqlEnd"/>			 
+	</select>
+
+</mapper>

@@ -1,12 +1,10 @@
-package com.zheng.service.impl;
+package com.zheng.logic.impl;
 
 import com.zheng.base.BaseDAO;
 import com.zheng.base.BaseServiceImpl;
-import com.zheng.base.page.OrderBean;
-import com.zheng.base.page.Page;
 import com.zheng.dao.BlogDAO;
 import com.zheng.entity.Blog;
-import com.zheng.service.BlogService;
+import com.zheng.logic.BlogService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

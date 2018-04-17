@@ -1,4 +1,4 @@
-package com.zheng.service;
+package com.zheng.logic;
 
 import com.zheng.entity.Blog;
 import com.zheng.base.BaseService;

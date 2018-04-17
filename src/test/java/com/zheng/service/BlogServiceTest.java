@@ -2,6 +2,7 @@ package com.zheng.service;
 
 import com.zheng.dao.BlogDAO;
 import com.zheng.entity.Blog;
+import com.zheng.logic.BlogService;
 import com.zheng.mapper.BlogMapper;
 import org.junit.After;
 import org.junit.Before;

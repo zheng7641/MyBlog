@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zheng.mapper.TagMapper">
+	<resultMap id="Tag_ResultMap" type="com.zheng.entity.Tag">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+	</resultMap>
+
+	<sql id="Tag_Column_List">
+		id,
+		name
+	</sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.zheng.entity.Tag" >
+		insert into tag (
+			id,
+			name
+		)
+		values (
+			#{id},
+			#{name}
+		)
+	</insert>
+
+	<insert id="insertBatch" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List" >
+		insert into tag (
+			id,
+			name
+		)
+		values 
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		  (
+			#{item.id},
+			#{item.name}
+		  )
+		</foreach>
+	</insert>
+
+	<delete id="deleteByUid" parameterType="java.lang.String">
+		delete from tag where uid = #{uid}
+	</delete>
+
+	<update id="updateByUid" parameterType="com.zheng.entity.Tag">
+		update tag
+			<set>
+				<if test="name != null">
+					name = #{name}
+				</if>
+			</set>
+		where uid = #{uid}
+	</update>
+	
+	<update id="updateByProperty" >
+		update tag
+			set 
+		<choose>
+			<when test="property=='name'">
+				name = #{value}
+			</when>
+		 </choose>
+		where uid = #{uid}
+	</update>
+
+	<update id="updateBatchByUid" parameterType="java.util.List" >
+		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
+			update tag
+			<set>
+				<if test="item.name != null">
+					name = #{item.name}
+				</if>
+		    </set>
+		     	where uid = #{item.uid}
+		 </foreach>		 
+	</update>
+	
+	<select id="getByUid"  parameterType="java.lang.String" resultMap="Tag_ResultMap">
+		select
+			<include refid="Tag_Column_List" />
+			from tag
+		where uid = #{uid}
+	</select>
+	
+	<select id="getCount" parameterType="com.zheng.entity.Tag" resultType="int" >
+		select
+			count(id)
+			from tag
+		 <where>
+			<if test="id != null">
+				and id = #{id}
+			</if>
+			<if test="name != null">
+				and name = #{name}
+			</if>
+		 </where>
+	</select>
+
+	<select id="findByExample" parameterType="map" resultMap="Tag_ResultMap" >
+		select
+			<include refid="Tag_Column_List" />
+			from tag
+		 <where>
+			<if test="entity.id != null">
+				and id = #{entity.id}
+			</if>
+			<if test="entity.name != null">
+				and name = #{entity.name}
+			</if>
+		 </where>
+		 <include refid="BaseSql.sqlEnd"/>			 
+	</select>
+
+</mapper>
