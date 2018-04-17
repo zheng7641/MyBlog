@@ -1,5 +1,6 @@
 package com.zheng.service;
 
+import com.zheng.core.redis.MyJedisPool;
 import com.zheng.dao.BlogDAO;
 import com.zheng.entity.Blog;
 import com.zheng.logic.BlogService;
@@ -11,6 +12,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import redis.clients.jedis.Jedis;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
@@ -46,5 +48,12 @@ public class BlogServiceTest {
     public void getBlog() {
         Blog blog = blogService.getBlog();
         System.out.println(blog);
+    }
+
+    @Test
+    public void testRedis(){
+        Jedis jedis = MyJedisPool.getResource();
+        jedis.set("a","a");
+        jedis.close();
     }
 }
