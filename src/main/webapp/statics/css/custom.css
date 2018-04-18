@@ -232,7 +232,6 @@ figure {
 }
 
 .entry-content p{
-	max-height: 200px;
     overflow: hidden;
 }
 
@@ -429,7 +428,7 @@ figure {
  */
 
 #site-footer {
-	position: absolute;
+	position: relative;
 	left: 0;
 	bottom: 0;
 	width: 100%;

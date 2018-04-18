@@ -39,7 +39,7 @@
 
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   								<ul class="nav navbar-nav navbar-right">
-    								<li class="cl-effect-11"><a href="/NBlog/blog/index" data-hover="Home">Home</a></li>
+    								<li class="cl-effect-11"><a href="/index" data-hover="Home">Home</a></li>
     								<li class="cl-effect-11"><a href="/NBlog/blog/all" data-hover="Blog">Blog</a></li>
     								<li class="cl-effect-11"><a href="/NBlog/about/" data-hover="About">About</a></li>
     								<li class="cl-effect-11"><a href="/NBlog/contact/" data-hover="Contact">Contact</a></li>
@@ -66,22 +66,19 @@
 					<main class="col-md-8">
 						<article class="post post-1">
 							<header class="entry-header">
-								<h1 class="entry-title">Adaptive Vs. Responsive Layouts And Optimal Text Readability</h1>
+								<h1 class="entry-title">${blog.title!}</h1>
 								<div class="entry-meta">
-									<span class="post-category"><a href="#">Web Design</a></span>
+									<span class="post-category"><a href="#">${blog.tagName!}</a></span>
 			
-									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
+									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">${blog.createTime}</time></a></span>
 			
-									<span class="post-author"><a href="#">Albert Einstein</a></span>
+									<!--<span class="post-author"><a href="#">Albert Einstein</a></span>
 			
-									<span class="comments-link"><a href="#">4 Comments</a></span>
+									<span class="comments-link"><a href="#">4 Comments</a></span>-->
 								</div>
 							</header>
 							<div class="entry-content clearfix">
-								<p>Responsive web design offers us a way forward, finally allowing us to design for the ebb and flow of things. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly.</p>
-								<p>Responsive web design offers us a way forward, finally allowing us to design for the ebb and flow of things. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly.</p>
-								<p>Responsive web design offers us a way forward, finally allowing us to design for the ebb and flow of things. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly.</p>
-								<p>Responsive web design offers us a way forward, finally allowing us to design for the ebb and flow of things. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly.</p>
+								<p>${blog.content}</p>
 							</div>
 						</article>
 					</main>

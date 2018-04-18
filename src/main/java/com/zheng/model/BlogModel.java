@@ -2,6 +2,7 @@ package com.zheng.model;
 
 import com.zheng.entity.Blog;
 import com.zheng.util.DateUtil;
+import com.zheng.util.StringUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -42,7 +43,24 @@ public class BlogModel {
         this.title = blog.getTitle();
         this.createTime = DateUtil.toString(blog.getCreateTime(),null);
         this.updateTime = DateUtil.toString(blog.getUpdateTime(),null);
-        this.content = blog.getContent();
+        if(!StringUtil.isEmpty(blog.getContent())&&blog.getContent().length()>100){
+            this.content = blog.getContent().substring(0,100)+"...";
+        }else{
+            this.content = blog.getContent();
+        }
+        this.tagName = blog.getTagName();
+    }
+
+    public BlogModel(Blog blog,Boolean isShort){
+        this.id = blog.getId();
+        this.title = blog.getTitle();
+        this.createTime = DateUtil.toString(blog.getCreateTime(),null);
+        this.updateTime = DateUtil.toString(blog.getUpdateTime(),null);
+        if(isShort&&!StringUtil.isEmpty(blog.getContent())&&blog.getContent().length()>100){
+            this.content = blog.getContent().substring(0,100)+"...";
+        }else{
+            this.content = blog.getContent();
+        }
         this.tagName = blog.getTagName();
     }
 

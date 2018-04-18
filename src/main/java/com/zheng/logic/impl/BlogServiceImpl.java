@@ -23,4 +23,8 @@ public class BlogServiceImpl extends BaseServiceImpl implements BlogService {
 //        blogDAO.findByExample(new Blog(),new Page(),new OrderBean());
         return byUid;
     }
+
+    public Blog getBlogById(String id){
+        return blogDAO.getByUid(id);
+    }
 }
