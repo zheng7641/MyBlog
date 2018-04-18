@@ -1,6 +1,11 @@
 package com.zheng.controller;
 
+import com.zheng.base.page.OrderBean;
+import com.zheng.base.page.OrderEnum;
+import com.zheng.base.page.Page;
+import com.zheng.base.page.PageList;
 import com.zheng.entity.Blog;
+import com.zheng.entity.field.BlogConstants;
 import com.zheng.logic.BlogService;
 import com.zheng.model.BlogModel;
 import com.zheng.util.StringUtil;
@@ -20,19 +25,32 @@ public class IndexController {
     @Autowired
     private BlogService blogService;
 
-    @RequestMapping("")
-    @ResponseBody
-    public String Test(ModelMap model) {
-        Blog blog = blogService.getBlog();
-        return blog.toString();
-    }
+//    @RequestMapping("")
+//    @ResponseBody
+//    public String Test(ModelMap model) {
+//        Blog blog = blogService.getBlog();
+//        return blog.toString();
+//    }
 
-    //http://localhost:8080/index
-    @RequestMapping("index")
+    //http://localhost:8080
+    @RequestMapping("")
     public String getIndex(ModelMap modelMap) {
+        PageList<Blog> blogPageList = blogService.listBlog(10, 1);
         Blog blog = blogService.getBlog();
         BlogModel blogModel = new BlogModel(blog,true);
         modelMap.addAttribute("blog", blogModel);
+        modelMap.addAttribute("page", 10);
+        modelMap.addAttribute("pageNum", 10);
+        return "index.html";
+    }
+
+    @RequestMapping("page/{pageNum}")
+    public String getIndexByPage(String pageNum,ModelMap modelMap){
+        Blog blog = blogService.getBlog();
+        BlogModel blogModel = new BlogModel(blog,true);
+        modelMap.addAttribute("blog", blogModel);
+        modelMap.addAttribute("page", 10);
+        modelMap.addAttribute("pageNum", 10);
         return "index.html";
     }
 
