@@ -2,6 +2,7 @@ package com.zheng.controller;
 
 import com.zheng.entity.Blog;
 import com.zheng.logic.BlogService;
+import com.zheng.model.BlogModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,6 +23,14 @@ public class IndexController {
     public String Test(ModelMap model) {
         Blog blog = blogService.getBlog();
         return blog.toString();
+    }
 
+    //http://localhost:8080/index
+    @RequestMapping("index")
+    public String getIndex(ModelMap modelMap){
+        Blog blog = blogService.getBlog();
+        BlogModel blogModel = new BlogModel(blog);
+        modelMap.addAttribute("blog",blogModel);
+        return "index.html";
     }
 }

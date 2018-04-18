@@ -1,16 +1,12 @@
-package com.zheng.entity.base;
+package com.zheng.model;
 
-import java.io.Serializable;
+import com.zheng.entity.Blog;
+import com.zheng.util.DateUtil;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
-import com.zheng.base.BaseBean;
-
-import java.util.Date;
-
-
-public class BaseBlog extends BaseBean implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@Component
+public class BlogModel {
     /**
      * 博客主键
      */
@@ -22,11 +18,11 @@ public class BaseBlog extends BaseBean implements Serializable {
     /**
      * 创建时间
      */
-    private Date createTime;
+    private String createTime;
     /**
      * 更新时间
      */
-    private Date updateTime;
+    private String updateTime;
     /**
      * 博客内容
      */
@@ -37,72 +33,55 @@ public class BaseBlog extends BaseBean implements Serializable {
      */
     private String tagName;
 
-    /**
-     * 博客主键
-     */
-    public Integer getId() {
-        return this.id;
+    public BlogModel(){
+
     }
 
-    /**
-     * 博客主键
-     */
+    public BlogModel(Blog blog){
+        this.id = blog.getId();
+        this.title = blog.getTitle();
+        this.createTime = DateUtil.toString(blog.getCreateTime(),null);
+        this.updateTime = DateUtil.toString(blog.getUpdateTime(),null);
+        this.content = blog.getContent();
+        this.tagName = blog.getTagName();
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * 标题
-     */
     public String getTitle() {
-        return this.title;
+        return title;
     }
 
-    /**
-     * 标题
-     */
     public void setTitle(String title) {
         this.title = title;
     }
 
-    /**
-     * 创建时间
-     */
-    public Date getCreateTime() {
-        return this.createTime;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    /**
-     * 创建时间
-     */
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 
-    /**
-     * 更新时间
-     */
-    public Date getUpdateTime() {
-        return this.updateTime;
+    public String getUpdateTime() {
+        return updateTime;
     }
 
-    /**
-     * 更新时间
-     */
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
     }
 
-    /**
-     * 博客内容
-     */
     public String getContent() {
-        return this.content;
+        return content;
     }
 
-    /**
-     * 博客内容
-     */
     public void setContent(String content) {
         this.content = content;
     }
@@ -117,11 +96,11 @@ public class BaseBlog extends BaseBean implements Serializable {
 
     @Override
     public String toString() {
-        return "BaseBlog{" +
+        return "blogModel{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
+                ", createTime='" + createTime + '\'' +
+                ", updateTime='" + updateTime + '\'' +
                 ", content='" + content + '\'' +
                 ", tagName='" + tagName + '\'' +
                 '}';

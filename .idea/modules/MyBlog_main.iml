@@ -27,7 +27,7 @@
           <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/../../src/main/webapp/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
-          <root url="file://D:\JetBrains\workspace20180326\MyBlog\MyBlog\src\main\webapp" relative="/" />
+          <root url="file://E:\ideaworkspace20180402\MyBlog\src\main\webapp" relative="/" />
         </webroots>
       </configuration>
     </facet>

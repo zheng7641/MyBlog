@@ -67,20 +67,20 @@
 						<article class="post post-1">
 							<header class="entry-header">
 								<h1 class="entry-title">
-									<a href="/blog/1">${blog}</a>
+									<a href="/blog/1">${blog.title}</a>
 								</h1>
 								<div class="entry-meta">
-									<span class="post-category"><a href="#">$!!!blog.tag[0]}</a></span>
+									<span class="post-category"><a href="#">${blog.tagName}</a></span>
 
-									<span class="post-date"><a href="#"><time class="entry-date">$!!!blog.createTime}</time></a></span>
+									<span class="post-date"><a href="#"><time class="entry-date">${blog.createTime}</time></a></span>
 
-									<span class="post-author"><a href="#">$!!!blog.author}</a></span>
+									<!--<span class="post-author"><a href="#">$!!!blog.author}</a></span>-->
 
-									<span class="comments-link"><a href="#">4 Comments</a></span>
+									<!--<span class="comments-link"><a href="#">4 Comments</a></span>-->
 								</div>
 							</header>
 							<div class="entry-content clearfix">
-								<p>$!!!blog.content }</p>
+								<p>${blog.content}</p>
 								<div class="read-more cl-effect-14">
 									<a href="/blog/1" class="more-link">阅读全文 <span class="meta-nav">→</span></a>
 								</div>
