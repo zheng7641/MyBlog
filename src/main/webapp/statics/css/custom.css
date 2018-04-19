@@ -224,6 +224,13 @@ figure {
 	margin-bottom: 30px;
 }
 
+.tcdPageCode{margin: 0px 30px; text-align: left;color: #ccc;}
+.tcdPageCode a{display: inline-block;color: #000;display: inline-block;height: 25px;	line-height: 25px;	padding: 0 10px;border: 1px solid #000;	margin: 0 2px;border-radius: 4px;vertical-align: middle;}
+.tcdPageCode a:hover{text-decoration: none;border: 1px solid #000;}
+.tcdPageCode span.current{display: inline-block;height: 25px;line-height: 25px;padding: 0 10px;margin: 0 2px;color: #fff;background-color: #000;	border: 1px solid #000;border-radius: 4px;vertical-align: middle;}
+.tcdPageCode span.disabled{	display: inline-block;height: 25px;line-height: 25px;padding: 0 10px;margin: 0 2px;	color: #bfbfbf;background: #f2f2f2;border: 1px solid #bfbfbf;border-radius: 4px;vertical-align: middle;}
+
+
 .entry-content {
 	font-size: 18px;
 	line-height: 1.9;

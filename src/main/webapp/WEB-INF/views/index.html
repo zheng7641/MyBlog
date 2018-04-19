@@ -89,6 +89,10 @@
 							</div>
 						</article>
 					</#list>
+					<div class="bottompage">
+						<div class="tcdPageCode">
+						</div>
+					</div>
 					</main>
 					<aside class="col-md-4">
 						<!--<div class="widget widget-recent-posts">
@@ -137,10 +141,6 @@
 					</aside>
 				</div>
 			</div>
-			<div class="bottompage">
-				<div class="tcdPageCode">
-				</div>
-			</div>
 		</div>
 		<footer id="site-footer">
 			<div class="container">
@@ -169,10 +169,10 @@
 		<script>
             $(document).ready(function(){
                 $(".tcdPageCode").createPage({
-                    pageCount:${pageNum },
-                    current:${page },
+                    pageCount:${pageCount },
+                    current:${currentPage },
                     backFn:function(p){
-                        window.location.href="http://localhost:8080/blog/1";
+                        window.location.href="http://localhost:8080/page/"+p;
                     }
                 })
             });

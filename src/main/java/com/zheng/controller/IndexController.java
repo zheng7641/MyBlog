@@ -38,24 +38,19 @@ public class IndexController {
     //http://localhost:8080
     @RequestMapping("")
     public String getIndex(ModelMap modelMap) {
-        Blog blog = blogService.getBlog();
-        BlogModel blogModel = new BlogModel(blog,true);
-        modelMap.addAttribute("blog", blogModel);
-
-        PageList<BlogModel> blogModelPageList = blogService.listBlog(10, 1,true);
+        PageList<BlogModel> blogModelPageList = blogService.listBlog(5, 1,true);
         modelMap.addAttribute("blogList", blogModelPageList);
-        modelMap.addAttribute("page", 10);
-        modelMap.addAttribute("pageNum", 10);
+        modelMap.addAttribute("pageCount", blogModelPageList.getTotalPages());
+        modelMap.addAttribute("currentPage", 1);
         return "index.html";
     }
 
-    @RequestMapping("page/{pageNum}")
-    public String getIndexByPage(String pageNum,ModelMap modelMap){
-        Blog blog = blogService.getBlog();
-        BlogModel blogModel = new BlogModel(blog,true);
-        modelMap.addAttribute("blog", blogModel);
-        modelMap.addAttribute("page", 10);
-        modelMap.addAttribute("pageNum", 10);
+    @RequestMapping("page/{currentPage}")
+    public String getIndexByPage(@PathVariable  int currentPage,ModelMap modelMap){
+        PageList<BlogModel> blogModelPageList = blogService.listBlog(5, currentPage,true);
+        modelMap.addAttribute("blogList", blogModelPageList);
+        modelMap.addAttribute("pageCount", blogModelPageList.getTotalPages());
+        modelMap.addAttribute("currentPage", currentPage);
         return "index.html";
     }
 
