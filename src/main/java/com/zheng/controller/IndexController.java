@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/")
 public class IndexController {
@@ -35,10 +38,12 @@ public class IndexController {
     //http://localhost:8080
     @RequestMapping("")
     public String getIndex(ModelMap modelMap) {
-        PageList<Blog> blogPageList = blogService.listBlog(10, 1);
         Blog blog = blogService.getBlog();
         BlogModel blogModel = new BlogModel(blog,true);
         modelMap.addAttribute("blog", blogModel);
+
+        PageList<BlogModel> blogModelPageList = blogService.listBlog(10, 1,true);
+        modelMap.addAttribute("blogList", blogModelPageList);
         modelMap.addAttribute("page", 10);
         modelMap.addAttribute("pageNum", 10);
         return "index.html";

@@ -65,10 +65,11 @@
 			<div class="container">
 				<div class="row">
 					<main class="col-md-8">
+						<#list blogList.datalist as blog>
 						<article class="post post-1">
 							<header class="entry-header">
 								<h1 class="entry-title">
-									<a href="/blog/1">${blog.title}</a>
+									<a href="/blog/${blog.id}">${blog.title}</a>
 								</h1>
 								<div class="entry-meta">
 									<span class="post-category"><a href="#">${blog.tagName}</a></span>
@@ -83,10 +84,11 @@
 							<div class="entry-content clearfix">
 								<p>${blog.content}</p>
 								<div class="read-more cl-effect-14">
-									<a href="/blog/1" class="more-link">阅读全文 <span class="meta-nav">→</span></a>
+									<a href="/blog/${blog.id}" class="more-link">阅读全文 <span class="meta-nav">→</span></a>
 								</div>
 							</div>
 						</article>
+					</#list>
 					</main>
 					<aside class="col-md-4">
 						<!--<div class="widget widget-recent-posts">
