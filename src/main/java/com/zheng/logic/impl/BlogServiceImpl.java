@@ -37,7 +37,7 @@ public class BlogServiceImpl extends BaseServiceImpl implements BlogService {
     }
 
     @Override
-    public PageList<BlogModel> listBlog(int pageSize, int currentPage, boolean isShort) {
+    public PageList<BlogModel> listBlog(int pageSize, int currentPage, String tagName,boolean isShort) {
         OrderBean ob = new OrderBean();
         ob.add(BlogConstants.CREATE_TIME, OrderEnum.DESC);
 
@@ -46,7 +46,9 @@ public class BlogServiceImpl extends BaseServiceImpl implements BlogService {
         page.setCurrentPage(currentPage);
         page.setTotalCount(blogDAO.getCount(new Blog()));
 
-        PageList<Blog> blogList = blogDAO.findByExamplePage(new Blog(), page, ob);
+        Blog entity = new Blog();
+        entity.setTagName(tagName);
+        PageList<Blog> blogList = blogDAO.findByExamplePage(entity, page, ob);
         blogList.setPage(page);
 
         List<BlogModel> blogModelList = new ArrayList<BlogModel>();

@@ -41,7 +41,7 @@
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   								<ul class="nav navbar-nav navbar-right">
     								<li class="cl-effect-11"><a href="/" data-hover="Home">Home</a></li>
-    								<li class="cl-effect-11"><a href="/blog/all" data-hover="Blog">Blog</a></li>
+    								<!--<li class="cl-effect-11"><a href="/blog/all" data-hover="Blog">Blog</a></li>-->
     								<li class="cl-effect-11"><a href="/about/" data-hover="About">About</a></li>
     								<li class="cl-effect-11"><a href="/contact/" data-hover="Contact">Contact</a></li>
   								</ul>
@@ -72,9 +72,9 @@
 									<a href="/blog/${blog.id}">${blog.title}</a>
 								</h1>
 								<div class="entry-meta">
-									<span class="post-category"><a href="#">${blog.tagName}</a></span>
+									<span class="post-category"><a href="/tag/${blog.tagName!}/1" style="text-decoration:underline;">${blog.tagName}</a></span>
 
-									<span class="post-date"><a href="#"><time class="entry-date">${blog.createTime}</time></a></span>
+									<span class="post-date"><a href="#" style="cursor: default;"><time class="entry-date">${blog.createTime}</time></a></span>
 
 									<!--<span class="post-author"><a href="#">$!!!blog.author}</a></span>-->
 
@@ -109,7 +109,7 @@
 								</li>
 							</ul>
 						</div>-->
-						<div class="widget widget-archives">
+						<!--<div class="widget widget-archives">
 							<h3 class="widget-title">Archives</h3>
 							<ul>
 								<li>
@@ -122,20 +122,18 @@
 									<a href="#">January 2013</a>
 								</li>
 							</ul>
-						</div>
+						</div>-->
 
 						<div class="widget widget-category">
 							<h3 class="widget-title">Category</h3>
 							<ul>
+								<#if tagList??>
+								<#list tagList.datalist as tag>
 								<li>
-									<a href="#">Web Design</a>
+									<a href="/tag/${tag.name}/1">${tag.name}</a>
 								</li>
-								<li>
-									<a href="#">Web Development</a>
-								</li>
-								<li>
-									<a href="#">SEO</a>
-								</li>
+								</#list>
+								</#if>
 							</ul>
 						</div>
 					</aside>
@@ -169,10 +167,16 @@
 		<script>
             $(document).ready(function(){
                 $(".tcdPageCode").createPage({
-                    pageCount:${pageCount },
-                    current:${currentPage },
+                    pageCount:${pageCount!},
+                    current:${currentPage!},
                     backFn:function(p){
-                        window.location.href="http://localhost:8080/page/"+p;
+                        var tagName = "${tagName!}"
+                        if(tagName!=null&&tagName!=""){
+                            window.location.href="http://localhost:8080/tag/"+tagName+"/"+p;
+						}else{
+                            window.location.href="http://localhost:8080/page/"+p;
+						}
+
                     }
                 })
             });

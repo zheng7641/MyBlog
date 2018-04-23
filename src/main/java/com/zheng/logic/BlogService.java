@@ -13,5 +13,5 @@ public interface BlogService extends BaseService {
 
     public Blog getBlogById(String id);
 
-    public PageList<BlogModel> listBlog(int pageSize, int currentPage, boolean isShort);
+    public PageList<BlogModel> listBlog(int pageSize, int currentPage, String tagName,boolean isShort);
 }
