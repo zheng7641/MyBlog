@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zheng.mapper.BlogMapper">
-	<!-- ============= 这里是 自己写的代码================ -->
-	<!--<resultMap id="Blog_ResultMap" type="com.zheng.entity.Blog">
-		<id column="id" property="id" />
-		<result column="title" property="title" />
-		<result column="create_time" property="createTime" />
-		<result column="update_time" property="updateTime" />
-		<result column="content" property="content" />
-	</resultMap>
+    <!-- ============= 这里是 自己写的代码================ -->
 
-	<sql id="Blog_Column_List">
-		id,
-		title,
-		create_time,
-		update_time,
-		content
-	</sql>
-	<select id="getByUid"  parameterType="java.lang.String" resultMap="Blog_ResultMap">
-		select
-		<include refid="Blog_Column_List" />
-		from blog
-		where id = #{uid}
-	</select>-->
+    <select id="searchBlog" parameterType="java.lang.String" resultMap="Blog_ResultMap">
+        select DISTINCT id,
+        <include refid="Blog_Column_List"/>
+        from blog
+        where title like '%${key}%'
+        or content like '%${key}%'
+        order by id ASC
+        <include refid="BaseSql.sqlEnd"/>
+        limit #{start},#{end}
+    </select>
+
+    <select id="searchBlog" parameterType="java.lang.String" resultType="int">
+        SELECT count(*)
+        FROM (
+            SELECT DISTINCT id,
+            FROM blog
+            where title like '%${key}%'
+            or content like '%${key}%'
+        )
+    </select>
 </mapper>
