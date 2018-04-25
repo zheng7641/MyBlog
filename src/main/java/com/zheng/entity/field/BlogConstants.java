@@ -22,6 +22,10 @@ public class BlogConstants {
 	* 博客内容
 	*/
 	public static final String CONTENT = "content" ;
+	/**
+	* 简短介绍
+	*/
+	public static final String INTRODUCTION = "introduction" ;
 	public static final String TAG_NAME = "tag_name" ;
 
 }

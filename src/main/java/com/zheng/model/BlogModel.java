@@ -43,11 +43,7 @@ public class BlogModel {
         this.title = blog.getTitle();
         this.createTime = DateUtil.toString(blog.getCreateTime(),null);
         this.updateTime = DateUtil.toString(blog.getUpdateTime(),null);
-        if(!StringUtil.isEmpty(blog.getContent())&&blog.getContent().length()>100){
-            this.content = blog.getContent().substring(0,100)+"...";
-        }else{
-            this.content = blog.getContent();
-        }
+        this.content = blog.getContent();
         this.tagName = blog.getTagName();
     }
 
@@ -56,8 +52,12 @@ public class BlogModel {
         this.title = blog.getTitle();
         this.createTime = DateUtil.toString(blog.getCreateTime(),null);
         this.updateTime = DateUtil.toString(blog.getUpdateTime(),null);
-        if(isShort&&!StringUtil.isEmpty(blog.getContent())&&blog.getContent().length()>100){
-            this.content = blog.getContent().substring(0,100)+"...";
+        if(isShort){
+            if(StringUtil.isEmpty(blog.getIntroduction())){
+                this.content = "";
+            }else{
+                this.content = blog.getIntroduction().substring(0,100)+"...";
+            }
         }else{
             this.content = blog.getContent();
         }
