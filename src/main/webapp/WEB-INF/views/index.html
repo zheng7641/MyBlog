@@ -50,9 +50,9 @@
 						<div id="header-search-box">
 							<a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
 							<div id="search-form" class="search-form">
-								<form role="search" method="get" id="searchform" action="#">
+								<form id="searchform" role="search" method="get" action="/search/">
 									<input type="search" placeholder="Search" required>
-									<button type="submit"><span class="ion-ios-search-strong"></span></button>
+									<button type="submit" onclick="test()"><span class="ion-ios-search-strong"></span></button>
 								</form>
 							</div>
 						</div>
@@ -171,15 +171,23 @@
                     current:${currentPage!},
                     backFn:function(p){
                         var tagName = "${tagName!}"
+						var searchName = "${searchName!}"
                         if(tagName!=null&&tagName!=""){
                             window.location.href="http://localhost:8080/tag/"+tagName+"/"+p;
+						}else if(search!=null&&searchName!=""){
+                            window.location.href="http://localhost:8080/page/"+p;
 						}else{
                             window.location.href="http://localhost:8080/page/"+p;
 						}
-
                     }
                 })
             });
+
+            function test()
+            {
+                document.getElementsById("searchform").submit();
+                alert(11);
+            }
 		</script>
 	</body>
 </html>

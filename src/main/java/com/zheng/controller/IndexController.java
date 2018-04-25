@@ -84,6 +84,19 @@ public class IndexController {
         return "index.html";
     }
 
+    @RequestMapping("/search/{key}")
+    public String searchBlog(@PathVariable String key, ModelMap modelMap){
+        PageList<BlogModel> blogModelPageList = blogService.searchBlog(key, 6, 1, true);
+
+        modelMap.addAttribute("blogList",blogModelPageList);
+        modelMap.addAttribute("pageCount", blogModelPageList.getTotalPages());
+        modelMap.addAttribute("currentPage", 1);
+
+        PageList<Tag> tagPageList = tagService.listTag(5, 1);
+        modelMap.addAttribute("tagList",tagPageList);
+        return "index.html";
+    }
+
     @RequestMapping("blog/{id}")
     public String getBlog(@PathVariable String id, ModelMap modelMap) {
         if(StringUtil.isEmpty(id)){

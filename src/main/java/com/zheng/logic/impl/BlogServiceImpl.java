@@ -66,11 +66,11 @@ public class BlogServiceImpl extends BaseServiceImpl implements BlogService {
         page.setPageSize(pageSize);
         page.setCurrentPage(currentPage);
         PageList<Blog> blogPageList = blogDAO.searchBlog(key, page);
-
         List<BlogModel> blogModelList = new ArrayList<BlogModel>();
         for (Blog blog : blogPageList.getDatalist()) {
             blogModelList.add(new BlogModel(blog, isShort));
         }
+        page.setTotalCount(blogPageList.getPage().getTotalCount());
         PageList<BlogModel> blogModelPageList = new PageList<>(blogModelList, page);
         return blogModelPageList;
     }

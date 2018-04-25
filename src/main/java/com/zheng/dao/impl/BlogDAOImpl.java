@@ -2,6 +2,7 @@ package com.zheng.dao.impl;
 
 import javax.annotation.Resource;
 
+import com.zheng.base.page.OrderBean;
 import com.zheng.base.page.Page;
 import com.zheng.base.page.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,4 @@ public class BlogDAOImpl extends BaseDAOImpl<Blog, String> implements BlogDAO {
         page.setTotalCount(blogMapper.searchBlogCount(key));
         return new PageList<Blog>(blogs,page);
     }
-
 }

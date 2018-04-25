@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BlogMapper extends BaseMapper<Blog, String> {
 
-    List<Blog> searchBlog(@Param("key") String key, @Param("start") int start, @Param("size") int size);
+    List<Blog> searchBlog(@Param("key") String key, @Param("start") int start, @Param("end") int end);
 
     int searchBlogCount(@Param("key") String key);
 }
