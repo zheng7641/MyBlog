@@ -88,6 +88,7 @@
 								</div>
 							</div>
 						</article>
+						<div></div><div></div>
 					</#list>
 					<div class="bottompage">
 						<div class="tcdPageCode">
@@ -174,9 +175,9 @@
 						var searchName = "${searchName!}"
                         if(tagName!=null&&tagName!=""){
                             window.location.href="http://localhost:8080/tag/"+tagName+"/"+p;
-						}else if(search!=null&&searchName!=""){
+						}else /*if(search!=null&&searchName!=""){
                             window.location.href="http://localhost:8080/page/"+p;
-						}else{
+						}else*/{
                             window.location.href="http://localhost:8080/page/"+p;
 						}
                     }
