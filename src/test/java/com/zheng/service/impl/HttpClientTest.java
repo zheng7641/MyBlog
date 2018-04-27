@@ -34,7 +34,7 @@ public class HttpClientTest {
                     /**读取服务器返回过来的json字符串数据**/
                     String strResult = EntityUtils.toString(response.getEntity());
                     a++;
-                    System.out.println(a);
+                    System.out.println(strResult.substring(0,200));
                 }
             }
         }
