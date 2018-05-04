@@ -56,7 +56,7 @@ public class BlogModel {
             if(StringUtil.isEmpty(blog.getIntroduction())){
                 this.content = "";
             }else{
-                this.content = blog.getIntroduction().substring(0,100)+"...";
+                this.content = blog.getIntroduction()+"...";
             }
         }else{
             this.content = blog.getContent();

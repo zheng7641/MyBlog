@@ -74,4 +74,9 @@ public class BlogServiceImpl extends BaseServiceImpl implements BlogService {
         PageList<BlogModel> blogModelPageList = new PageList<>(blogModelList, page);
         return blogModelPageList;
     }
+
+    @Override
+    public int addBlog(Blog blog) {
+        return blogDAO.insert(blog);
+    }
 }
