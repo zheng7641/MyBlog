@@ -288,14 +288,12 @@
                                 <div class="span12 field-box">
                                     <label>State:</label>
                                     <div class="ui-select span5">
-                                        <select>
-                                            <option value="AK" />Alaska
-                                            <option value="HI" />Hawaii
-                                            <option value="CA" />California
-                                            <option value="NV" />Nevada
-                                            <option value="OR" />Oregon
-                                            <option value="WA" />Washington
-                                            <option value="AZ" />Arizona
+                                        <select name="tagSelect">
+                                            <#if tagList??&&tagList.datalist??>
+                                            <#list tagList.datalist as tag>
+                                            <option value="${tag.name}"/>${tag.name!}
+                                            </#list>
+                                            </#if>
                                         </select>
                                     </div>
                                 </div>
@@ -529,8 +527,9 @@
             var title = $("input[name='blogTitle']").val();
             var blog = getContent();
             var introduction =getContentTxt().substring(0,100);
+            var tag = $("select[name='tagSelect']").val();
             var url = "http://localhost:8080/admin/addBlog"
-            $.post(url, {'blog':blog, 'title':title,"introduction":introduction});
+            $.post(url, {'blog':blog, 'title':title,"introduction":introduction,"tag":tag});
             location.reload();
         }
     </script>

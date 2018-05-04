@@ -1,7 +1,10 @@
 package com.zheng.controller;
 
+import com.zheng.base.page.PageList;
 import com.zheng.entity.Blog;
+import com.zheng.entity.Tag;
 import com.zheng.logic.BlogService;
+import com.zheng.logic.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -27,6 +30,9 @@ public class AdminController {
     @Autowired
     private BlogService blogService;
 
+    @Autowired
+    private TagService tagService;
+
     @RequestMapping("")
     public String getIndex(ModelMap modelMap) {
 
@@ -35,20 +41,21 @@ public class AdminController {
 
     @RequestMapping("/newUser")
     public String newUser(ModelMap modelMap) {
-
+        PageList<Tag> tagPageList = tagService.listTag(1000,1);
+        modelMap.addAttribute("tagList",tagPageList);
         return "admin/new-user.html";
     }
 
     @RequestMapping("/addBlog")
     @ResponseBody
-    public String addBlog(String title,String blog,String introduction,ModelMap modelMap) {
+    public String addBlog(String title, String blog, String introduction,String tag,ModelMap modelMap) {
         Blog entity = new Blog();
         entity.setContent(blog);
         entity.setTitle(title);
         entity.setCreateTime(new Date());
         entity.setUpdateTime(new Date());
         entity.setIntroduction(introduction);
-        entity.setTagName("aaa");
+        entity.setTagName(tag);
         blogService.addBlog(entity);
         return "success";
     }
