@@ -34,12 +34,10 @@ public class IndexController {
     @Resource
     private TagService tagService;
 
-//    @RequestMapping("")
-//    @ResponseBody
-//    public String Test(ModelMap model) {
-//        Blog blog = blogService.getBlog();
-//        return blog.toString();
-//    }
+    @RequestMapping("/test")
+    public String Test(ModelMap model) {
+        return "test.html";
+    }
 
     //http://localhost:8080
     @RequestMapping("")
