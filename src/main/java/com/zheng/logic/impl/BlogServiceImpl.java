@@ -11,6 +11,7 @@ import com.zheng.entity.Blog;
 import com.zheng.entity.field.BlogConstants;
 import com.zheng.logic.BlogService;
 import com.zheng.model.BlogModel;
+import com.zheng.util.IntegerUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -78,5 +79,11 @@ public class BlogServiceImpl extends BaseServiceImpl implements BlogService {
     @Override
     public int addBlog(Blog blog) {
         return blogDAO.insert(blog);
+    }
+
+    public int deleteBlog(int id){
+        Blog entity = blogDAO.getByUid(String.valueOf(id));
+
+        return blogDAO.updateByUid(entity);
     }
 }

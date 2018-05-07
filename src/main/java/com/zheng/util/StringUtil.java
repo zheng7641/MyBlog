@@ -284,6 +284,54 @@ public class StringUtil {
 	}
 
 	/**
+	 * 将字串转为数字
+	 *
+	 * @param str
+	 * @param checked如果为treu格式不正确抛出异常
+	 * @return
+	 */
+	public static int toInt(String str, boolean checked,int defaultValue) {
+		int value = 0;
+		if (str == null || str.equals("")) {
+			return defaultValue;
+		}
+		try {
+			value = Integer.parseInt(str);
+		} catch (Exception ex) {
+			if (checked) {
+				throw new RuntimeException("整型数字格式不正确");
+			} else {
+				return defaultValue;
+			}
+		}
+		return value;
+	}
+
+	/**
+	 * 检查string是否为空为null，并返回默认值
+	 *
+	 * @param str
+	 * @param checked如果为treu格式不正确抛出异常
+	 * @return
+	 */
+	public static String checkString(String str, boolean checked,String defaultValue) {
+		String value = "";
+		if (str == null || str.equals("")) {
+			return defaultValue;
+		}
+		try {
+			value = str;
+		} catch (Exception ex) {
+			if (checked) {
+				throw new RuntimeException("字符串格式不正确");
+			} else {
+				return defaultValue;
+			}
+		}
+		return value;
+	}
+
+	/**
 	 * 将字符型转为Int型
 	 * 
 	 * @param str

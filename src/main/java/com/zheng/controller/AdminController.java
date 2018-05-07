@@ -5,6 +5,8 @@ import com.zheng.entity.Blog;
 import com.zheng.entity.Tag;
 import com.zheng.logic.BlogService;
 import com.zheng.logic.TagService;
+import com.zheng.model.BlogModel;
+import com.zheng.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -72,5 +74,22 @@ public class AdminController {
         }
 //        System.out.println("读取的文件:" + res.getFilename() + ",内容:" + bos.toString());
         return bos.toString();
+    }
+
+    @RequestMapping("blogList")
+    public String getBlogList(String currentPage,String tagName,String searchName,ModelMap modelMap){
+        PageList<BlogModel> blogModelPageList = blogService.listBlog(10, StringUtil.toInt(currentPage,false,1),StringUtil.checkString(tagName,false,null),true);
+        modelMap.addAttribute("blogList", blogModelPageList);
+        modelMap.addAttribute("pageCount", blogModelPageList.getTotalPages());
+        modelMap.addAttribute("currentPage", StringUtil.toInt(currentPage,false,1));
+        modelMap.addAttribute("tagName", StringUtil.checkString(tagName,false,""));
+        modelMap.addAttribute("searchName", StringUtil.checkString(searchName,false,""));
+        return "admin/user-list.html";
+    }
+
+    @RequestMapping("deleteBlog")
+    public String deleteBlog(String id){
+        
+        return "admin/user-list.html";
     }
 }

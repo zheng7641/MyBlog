@@ -18,4 +18,6 @@ public interface BlogService extends BaseService {
     public PageList<BlogModel> searchBlog(String key, int pageSize, int currentPage, boolean isShort);
 
     public int addBlog(Blog blog);
+
+    public int deleteBlog(int id);
 }

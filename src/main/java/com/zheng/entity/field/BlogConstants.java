@@ -27,5 +27,9 @@ public class BlogConstants {
 	*/
 	public static final String INTRODUCTION = "introduction" ;
 	public static final String TAG_NAME = "tag_name" ;
+	/**
+	* 是否删除 0未删除 1删除
+	*/
+	public static final String IS_DELETE = "is_delete" ;
 
 }

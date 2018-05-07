@@ -9,6 +9,7 @@
 		<result column="content" property="content" />
 		<result column="introduction" property="introduction" />
 		<result column="tag_name" property="tagName" />
+		<result column="is_delete" property="isDelete" />
 	</resultMap>
 
 	<sql id="Blog_Column_List">
@@ -18,7 +19,8 @@
 		update_time,
 		content,
 		introduction,
-		tag_name
+		tag_name,
+		is_delete
 	</sql>
 
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.zheng.entity.Blog" >
@@ -29,7 +31,8 @@
 			update_time,
 			content,
 			introduction,
-			tag_name
+			tag_name,
+			is_delete
 		)
 		values (
 			#{id},
@@ -38,7 +41,8 @@
 			#{updateTime},
 			#{content},
 			#{introduction},
-			#{tagName}
+			#{tagName},
+			#{isDelete}
 		)
 	</insert>
 
@@ -50,7 +54,8 @@
 			update_time,
 			content,
 			introduction,
-			tag_name
+			tag_name,
+			is_delete
 		)
 		values 
 		<foreach collection="list" item="item" index="index"
@@ -62,7 +67,8 @@
 			#{item.updateTime},
 			#{item.content},
 			#{item.introduction},
-			#{item.tagName}
+			#{item.tagName},
+			#{item.isDelete}
 		  )
 		</foreach>
 	</insert>
@@ -88,6 +94,9 @@
 				</if>
 				<if test="tagName != null">
 					tag_name = #{tagName}
+				</if>
+				<if test="isDelete != null">
+					is_delete = #{isDelete}
 				</if>
 			</set>
 		where id = #{id}
@@ -115,6 +124,9 @@
 			<when test="property=='tagName'">
 				tag_name = #{value}
 			</when>
+			<when test="property=='isDelete'">
+				is_delete = #{value}
+			</when>
 		 </choose>
 		where id = #{id}
 	</update>
@@ -137,6 +149,9 @@
 				</if>
 				<if test="item.tagName != null">
 					tag_name = #{item.tagName}
+				</if>
+				<if test="item.isDelete != null">
+					is_delete = #{item.isDelete}
 				</if>
 		    </set>
 		     	where id = #{item.id}
@@ -176,6 +191,9 @@
 			<if test="tagName != null">
 				and tag_name = #{tagName}
 			</if>
+			 <if test="isDelete != null">
+				 and is_delete = #{isDelete}
+			 </if>
 		 </where>
 	</select>
 
@@ -205,6 +223,9 @@
 			<if test="entity.tagName != null">
 				and tag_name = #{entity.tagName}
 			</if>
+			 <if test="entity.isDelete != null">
+				 and is_delete = #{entity.isDelete}
+			 </if>
 		 </where>
 		 <include refid="BaseSql.sqlEnd"/>			 
 	</select>

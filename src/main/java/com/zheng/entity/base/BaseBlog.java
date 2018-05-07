@@ -34,6 +34,10 @@ public class BaseBlog extends BaseBean implements Serializable {
 	*/
 	private String introduction ;
 	private String tagName ;
+	/**
+	* 是否删除 0未删除 1删除
+	*/
+	private Long isDelete ;
 
 
 	/**
@@ -113,5 +117,17 @@ public class BaseBlog extends BaseBean implements Serializable {
 		}
 	public void setTagName(String tagName) {
 			this.tagName = tagName;
+		}
+	/**
+	* 是否删除 0未删除 1删除
+	*/
+	public Long getIsDelete() {
+			return this.isDelete;
+		}
+	/**
+	* 是否删除 0未删除 1删除
+	*/
+	public void setIsDelete(Long isDelete) {
+			this.isDelete = isDelete;
 		}
 }
