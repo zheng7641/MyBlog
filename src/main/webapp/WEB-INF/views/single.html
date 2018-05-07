@@ -40,9 +40,9 @@
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   								<ul class="nav navbar-nav navbar-right">
     								<li class="cl-effect-11"><a href="/" data-hover="Home">Home</a></li>
-    								<li class="cl-effect-11"><a href="/NBlog/blog/all" data-hover="Blog">Blog</a></li>
+    								<!--<li class="cl-effect-11"><a href="/NBlog/blog/all" data-hover="Blog">Blog</a></li>-->
     								<li class="cl-effect-11"><a href="/NBlog/about/" data-hover="About">About</a></li>
-    								<li class="cl-effect-11"><a href="/NBlog/contact/" data-hover="Contact">Contact</a></li>
+    								<!--<li class="cl-effect-11"><a href="/NBlog/contact/" data-hover="Contact">Contact</a></li>-->
   								</ul>
 							</div><!-- /.navbar-collapse -->
 						</nav>
@@ -68,7 +68,7 @@
 							<header class="entry-header">
 								<h1 class="entry-title">${blog.title!}</h1>
 								<div class="entry-meta">
-									<span class="post-category"><a href="#">${blog.tagName!}</a></span>
+									<span class="post-category"><a href="/tag/${blog.tagName!}/1">${blog.tagName!}</a></span>
 			
 									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">${blog.createTime}</time></a></span>
 			
@@ -89,7 +89,7 @@
 								<#if tagList??>
 								<#list tagList.datalist as tag>
 								<li>
-									<a href="/tag/${tag.name}/page/1">${tag.name}</a>
+									<a href="/tag/${tag.name}/1">${tag.name}</a>
 								</li>
 								</#list>
 								</#if>

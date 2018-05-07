@@ -49,6 +49,7 @@ public class BlogServiceImpl extends BaseServiceImpl implements BlogService {
 
         Blog entity = new Blog();
         entity.setTagName(tagName);
+        entity.setIsDelete(0l);
         PageList<Blog> blogList = blogDAO.findByExamplePage(entity, page, ob);
         blogList.setPage(page);
 
@@ -81,9 +82,7 @@ public class BlogServiceImpl extends BaseServiceImpl implements BlogService {
         return blogDAO.insert(blog);
     }
 
-    public int deleteBlog(int id){
-        Blog entity = blogDAO.getByUid(String.valueOf(id));
-
-        return blogDAO.updateByUid(entity);
+    public Integer deleteBlog(int id){
+        return  blogDAO.deleteById(id);
     }
 }

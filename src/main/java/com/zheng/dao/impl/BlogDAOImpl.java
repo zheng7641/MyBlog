@@ -40,4 +40,9 @@ public class BlogDAOImpl extends BaseDAOImpl<Blog, String> implements BlogDAO {
         page.setTotalCount(blogMapper.searchBlogCount(key));
         return new PageList<Blog>(blogs,page);
     }
+
+    @Override
+    public Integer deleteById(int id) {
+        return blogMapper.deleteById(id);
+    }
 }

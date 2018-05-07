@@ -89,7 +89,11 @@ public class AdminController {
 
     @RequestMapping("deleteBlog")
     public String deleteBlog(String id){
-        
-        return "admin/user-list.html";
+        try {
+            blogService.deleteBlog(StringUtil.toInt(id, true));
+        }catch (Exception e){
+            return "fail";
+        }
+        return "redirect:/admin/blogList";
     }
 }

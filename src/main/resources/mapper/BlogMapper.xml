@@ -22,4 +22,8 @@
             or content like '% ${key} %'
         ) a
     </select>
+
+    <select id="deleteById" parameterType="java.lang.Integer" resultType="Integer">
+        update blog set is_delete=1 where id = ${id}
+    </select>
 </mapper>

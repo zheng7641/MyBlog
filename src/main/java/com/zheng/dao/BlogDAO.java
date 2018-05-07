@@ -10,4 +10,5 @@ import java.util.List;
 public interface BlogDAO extends BaseDAO<Blog, String> {
     public String hello();
     public PageList<Blog> searchBlog(String key, Page page);
+    public Integer deleteById(int id);
 }

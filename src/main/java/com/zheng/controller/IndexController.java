@@ -10,7 +10,9 @@ import com.zheng.entity.field.BlogConstants;
 import com.zheng.logic.BlogService;
 import com.zheng.logic.TagService;
 import com.zheng.model.BlogModel;
+import com.zheng.util.IntegerUtil;
 import com.zheng.util.StringUtil;
+import com.zheng.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -53,8 +55,11 @@ public class IndexController {
     }
 
     @RequestMapping("page/{currentPage}")
-    public String getIndexByPage(@PathVariable  int currentPage,ModelMap modelMap){
-        PageList<BlogModel> blogModelPageList = blogService.listBlog(5, currentPage,null,true);
+    public String getIndexByPage(@PathVariable  String currentPage,ModelMap modelMap){
+        if(!ValidationUtil.validationInteger(currentPage)){
+            return "404.html";
+        }
+        PageList<BlogModel> blogModelPageList = blogService.listBlog(5, Integer.valueOf(currentPage),null,true);
         modelMap.addAttribute("blogList", blogModelPageList);
         modelMap.addAttribute("pageCount", blogModelPageList.getTotalPages());
         modelMap.addAttribute("currentPage", currentPage);
@@ -66,7 +71,9 @@ public class IndexController {
 
     @RequestMapping("tag/{tagName}/{currentPage}")
     public String getIndexByTag(@PathVariable String tagName,@PathVariable String currentPage, ModelMap modelMap){
-
+        if(!ValidationUtil.validationInteger(currentPage)){
+            return "404.html";
+        }
         Integer currentpage = 1;
         if(!StringUtil.isEmpty(currentPage)){
             currentpage = Integer.valueOf(currentPage);
@@ -97,10 +104,13 @@ public class IndexController {
 
     @RequestMapping("blog/{id}")
     public String getBlog(@PathVariable String id, ModelMap modelMap) {
-        if(StringUtil.isEmpty(id)){
-            return null;
+        if(!ValidationUtil.validationInteger(id)){
+            return "404.html";
         }
         Blog blog = blogService.getBlogById(id);
+        if(blog==null){
+            return "404.html";
+        }
         BlogModel blogModel = new BlogModel(blog,false);
         modelMap.addAttribute("blog", blogModel);
 

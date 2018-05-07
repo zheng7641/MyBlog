@@ -19,5 +19,5 @@ public interface BlogService extends BaseService {
 
     public int addBlog(Blog blog);
 
-    public int deleteBlog(int id);
+    public Integer deleteBlog(int id);
 }
