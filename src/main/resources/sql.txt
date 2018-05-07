@@ -1,1 +1,0 @@
-前言我的 Qt Creator 是在 Windows 下跑的,使用的 Qt-VS2013(也就是使用 MSVC ) 在 debug 的时候,出现了 调试器未设置 的提示. 问题出在,VS从2012开始，就不自带dbg了. 所以dbg需要手动下载安装. Get Startwindows下，在下面页面下
