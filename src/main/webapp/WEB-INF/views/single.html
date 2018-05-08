@@ -1,6 +1,13 @@
 <!DOCTYPE html>
+
 <html>
 	<head>
+		<script>
+            $(document).ready(function(){
+                var ip=$.ajax({url:"/ip",async:false});
+            });
+		</script>
+
 		<title>Z &amp; H</title>
 
 		<!-- meta -->
@@ -8,16 +15,16 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	    <!-- css -->
-		<link rel="stylesheet" href="../css/bootstrap.min.css">
-		<link rel="stylesheet" href="../css/ionicons.min.css">
-		<link rel="stylesheet" href="../css/pace.css">
-	    <link rel="stylesheet" href="../css/custom.css">
+		<link rel="stylesheet" href="${rootPath!}/statics/css/bootstrap.min.css">
+		<link rel="stylesheet" href="${rootPath!}/statics/css/ionicons.min.css">
+		<link rel="stylesheet" href="${rootPath!}/statics/css/pace.css">
+	    <link rel="stylesheet" href="${rootPath!}/statics/css/custom.css">
 
 	    <!-- js -->
-	    <script src="../js/jquery-2.1.3.min.js"></script>
-	    <script src="../js/bootstrap.min.js"></script>
-	    <script src="../js/pace.min.js"></script>
-	    <script src="../js/modernizr.custom.js"></script>
+	    <script src="${rootPath!}/statics/js/jquery-2.1.3.min.js"></script>
+	    <script src="${rootPath!}/statics/js/bootstrap.min.js"></script>
+	    <script src="${rootPath!}/statics/js/pace.min.js"></script>
+	    <script src="${rootPath!}/statics/js/modernizr.custom.js"></script>
 	</head>
 
 	<body id="single">
@@ -122,6 +129,6 @@
 			</nav>
 		</div>
 
-<script src="../js/script.js"></script>
+	<script src="${rootPath!}/statics/js/script.js"></script>
 	</body>
 </html>

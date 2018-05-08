@@ -1,16 +1,11 @@
 package com.zheng.controller;
 
-import com.zheng.base.page.OrderBean;
-import com.zheng.base.page.OrderEnum;
-import com.zheng.base.page.Page;
 import com.zheng.base.page.PageList;
 import com.zheng.entity.Blog;
 import com.zheng.entity.Tag;
-import com.zheng.entity.field.BlogConstants;
 import com.zheng.logic.BlogService;
 import com.zheng.logic.TagService;
 import com.zheng.model.BlogModel;
-import com.zheng.util.IntegerUtil;
 import com.zheng.util.StringUtil;
 import com.zheng.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
+
+import static com.zheng.util.IpUtil.getIp;
 
 @Controller
 @RequestMapping("/")
@@ -51,6 +45,8 @@ public class IndexController {
 
         PageList<Tag> tagPageList = tagService.listTag(5, 1);
         modelMap.addAttribute("tagList",tagPageList);
+
+        modelMap.addAttribute("rootPath",getIp());
         return "index.html";
     }
 
@@ -66,6 +62,8 @@ public class IndexController {
 
         PageList<Tag> tagPageList = tagService.listTag(5, 1);
         modelMap.addAttribute("tagList",tagPageList);
+
+        modelMap.addAttribute("rootPath",getIp());
         return "index.html";
     }
 
@@ -83,9 +81,10 @@ public class IndexController {
         modelMap.addAttribute("pageCount", blogModelPageList.getTotalPages());
         modelMap.addAttribute("currentPage", currentPage);
 
-
         PageList<Tag> tagPageList = tagService.listTag(5, 1);
         modelMap.addAttribute("tagList",tagPageList);
+
+        modelMap.addAttribute("rootPath",getIp());
         return "index.html";
     }
 
@@ -116,6 +115,9 @@ public class IndexController {
 
         PageList<Tag> tagPageList = tagService.listTag(5, 1);
         modelMap.addAttribute("tagList",tagPageList);
+
+        modelMap.addAttribute("rootPath",getIp());
         return "single.html";
     }
+
 }
