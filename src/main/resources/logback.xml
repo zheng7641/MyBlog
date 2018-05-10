@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="false" scanPeriod="3 seconds">
+    <contextName>solr</contextName>
+    <property name="log_dir" value="D:\\log\\solr" />
+
+    <!-- 控制台打印 -->
+    <appender name="ConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- %logger输出完整类名 %file仅输出类名 -->
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %msg %file:%line%n</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- 从低到高ALL、 TRACE 、 DEBUG 、INFO 、WARN 、ERROR 、OFF  参考ch.qos.logback.classic.Level类   -->
+    <root level="INFO"> <!--这个root由logger节点替代，因为可以分不同包管理不同的日志文件-->
+        <appender-ref ref="ConsoleAppender" />
+    </root>
+</configuration>

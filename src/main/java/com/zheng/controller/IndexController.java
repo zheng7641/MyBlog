@@ -8,6 +8,8 @@ import com.zheng.logic.TagService;
 import com.zheng.model.BlogModel;
 import com.zheng.util.StringUtil;
 import com.zheng.util.ValidationUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -35,6 +37,8 @@ public class IndexController {
         return "test.html";
     }
 
+    private static Logger logger = LoggerFactory.getLogger(IndexController.class);
+
     //http://localhost:8080
     @RequestMapping("")
     public String getIndex(ModelMap modelMap) {
@@ -47,6 +51,11 @@ public class IndexController {
         modelMap.addAttribute("tagList",tagPageList);
 
         modelMap.addAttribute("rootPath",getIp());
+        logger.debug("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        logger.error("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+        logger.trace("acccccccccccccccccccccccccc");
+        logger.info("dddddddddddddddddddddd");
+        logger.warn("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         return "index.html";
     }
 
