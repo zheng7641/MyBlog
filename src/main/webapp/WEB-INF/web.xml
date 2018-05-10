@@ -5,20 +5,23 @@
     <display-name>Archetype Created Web Application</display-name>
 
     <error-page>
-
         <error-code>404</error-code>
-
         <location>/WEB-INF/views/404.html</location>
-
     </error-page>
-
     <error-page>
-
         <error-code>505</error-code>
-
         <location>/WEB-INF/views/404.html</location>
-
     </error-page>
+
+    <!-- 配置日志     logback-->
+    <context-param>
+        <param-name>logbackConfigLocation</param-name>
+        <param-value>classpath:logback.xml</param-value>
+    </context-param>
+    <!--     logback扩展，监听,用于解决与spring的结合 -->
+    <listener>
+        <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
+    </listener>
 
     <!-- spring监听器 -->
     <listener>
@@ -45,4 +48,5 @@
         <servlet-name>springmvc</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
 </web-app>

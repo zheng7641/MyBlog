@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration scan="false" scanPeriod="3 seconds">
-    <contextName>solr</contextName>
-    <property name="log_dir" value="D:\\log\\solr" />
+<!--
+    参考资料: http://my.oschina.net/looly/blog/298675
+    该文章只适用于入门，但未介绍很详细
+-->
+<configuration>
 
-    <!-- 控制台打印 -->
-    <appender name="ConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- appender 的配置表示打印到控制台。 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoder 默认配置为 PatternLayoutEncoder -->
         <encoder>
-            <!-- %logger输出完整类名 %file仅输出类名 -->
-            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %msg %file:%line%n</Pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!-- 从低到高ALL、 TRACE 、 DEBUG 、INFO 、WARN 、ERROR 、OFF  参考ch.qos.logback.classic.Level类   -->
-    <root level="INFO"> <!--这个root由logger节点替代，因为可以分不同包管理不同的日志文件-->
-        <appender-ref ref="ConsoleAppender" />
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
     </root>
+
 </configuration>
