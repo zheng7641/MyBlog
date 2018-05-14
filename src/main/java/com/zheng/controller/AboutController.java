@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import static com.zheng.util.IpUtil.getIp;
+import static com.zheng.common.util.IpUtil.getIp;
 
 @Controller
 @RequestMapping("/about")

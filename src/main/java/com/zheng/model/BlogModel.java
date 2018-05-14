@@ -1,10 +1,9 @@
 package com.zheng.model;
 
 import com.zheng.entity.Blog;
-import com.zheng.util.DateUtil;
-import com.zheng.util.StringUtil;
+import com.zheng.common.util.DateUtil;
+import com.zheng.common.util.StringUtil;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 @Component
 public class BlogModel {

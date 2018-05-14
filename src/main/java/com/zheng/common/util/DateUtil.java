@@ -1,4 +1,4 @@
-package com.zheng.util;
+package com.zheng.common.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

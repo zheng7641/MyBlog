@@ -6,8 +6,8 @@ import com.zheng.entity.Tag;
 import com.zheng.logic.BlogService;
 import com.zheng.logic.TagService;
 import com.zheng.model.BlogModel;
-import com.zheng.util.StringUtil;
-import com.zheng.util.ValidationUtil;
+import com.zheng.common.util.StringUtil;
+import com.zheng.common.util.ValidationUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 
-import static com.zheng.util.IpUtil.getIp;
+import static com.zheng.common.util.IpUtil.getIp;
 
 @Controller
 @RequestMapping("/")
@@ -51,11 +51,7 @@ public class IndexController {
         modelMap.addAttribute("tagList", tagPageList);
 
         modelMap.addAttribute("rootPath", getIp());
-        logger.debug("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        logger.error("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-        logger.trace("acccccccccccccccccccccccccc");
-        logger.info("dddddddddddddddddddddd");
-        logger.warn("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+        logger.info("getIndex");
         return "index.html";
     }
 

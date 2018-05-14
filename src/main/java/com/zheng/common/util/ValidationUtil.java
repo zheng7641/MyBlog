@@ -1,4 +1,4 @@
-package com.zheng.util;
+package com.zheng.common.util;
 
 /**
  * @author zhengct on 2018/5/7

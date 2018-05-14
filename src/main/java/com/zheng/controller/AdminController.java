@@ -6,10 +6,9 @@ import com.zheng.entity.Tag;
 import com.zheng.logic.BlogService;
 import com.zheng.logic.TagService;
 import com.zheng.model.BlogModel;
-import com.zheng.util.StringUtil;
+import com.zheng.common.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
 import org.springframework.core.io.WritableResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.Date;
 
 /**

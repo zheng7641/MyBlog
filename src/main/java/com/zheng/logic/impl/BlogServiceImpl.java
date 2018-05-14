@@ -61,11 +61,6 @@ public class BlogServiceImpl extends BaseServiceImpl implements BlogService {
             blogModelList.add(new BlogModel(blog, isShort));
         }
         PageList<BlogModel> blogModelPageList = new PageList<>(blogModelList, page);
-        logger.debug("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        logger.error("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-        logger.trace("acccccccccccccccccccccccccc");
-        logger.info("dddddddddddddddddddddd");
-        logger.warn("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         return blogModelPageList;
 
     }

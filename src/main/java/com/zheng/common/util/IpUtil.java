@@ -1,4 +1,4 @@
-package com.zheng.util;
+package com.zheng.common.util;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
