@@ -6,15 +6,13 @@ import com.zheng.base.page.OrderBean;
 import com.zheng.base.page.OrderEnum;
 import com.zheng.base.page.Page;
 import com.zheng.base.page.PageList;
-import com.zheng.controller.IndexController;
 import com.zheng.dao.BlogDAO;
 import com.zheng.entity.Blog;
 import com.zheng.entity.field.BlogConstants;
 import com.zheng.logic.BlogService;
 import com.zheng.model.BlogModel;
-import com.zheng.util.IntegerUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -30,7 +28,7 @@ public class BlogServiceImpl extends BaseServiceImpl implements BlogService {
         return blogDAO;
     }
 
-    private static final Logger logger = LoggerFactory.getLogger(BlogServiceImpl.class);
+    private static Logger logger = LogManager.getLogger(BlogServiceImpl.class.getName());
 
     public Blog getBlog() {
         Blog byUid = blogDAO.getByUid("1");

@@ -4,8 +4,9 @@ package com.zheng.base;
 import com.zheng.base.page.OrderBean;
 import com.zheng.base.page.Page;
 import com.zheng.base.page.PageList;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.zheng.logic.impl.BlogServiceImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -18,7 +19,7 @@ import java.util.Map;
  * @param <T>
  */
 public abstract class BaseDAOImpl<T extends BaseBean,K> implements BaseDAO<T,K>{
-	public final Logger logger = LoggerFactory.getLogger(getClass());
+	private static Logger logger = LogManager.getLogger(BaseDAOImpl.class.getName());
 
 	public abstract BaseMapper<T,K> getMapper();
 

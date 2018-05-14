@@ -8,8 +8,8 @@ import com.zheng.logic.TagService;
 import com.zheng.model.BlogModel;
 import com.zheng.util.StringUtil;
 import com.zheng.util.ValidationUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,20 +37,20 @@ public class IndexController {
         return "test.html";
     }
 
-    private static Logger logger = LoggerFactory.getLogger(IndexController.class);
+    private static Logger logger = LogManager.getLogger(IndexController.class.getName());
 
     //http://localhost:8080
     @RequestMapping("")
     public String getIndex(ModelMap modelMap) {
-        PageList<BlogModel> blogModelPageList = blogService.listBlog(5, 1,null,true);
+        PageList<BlogModel> blogModelPageList = blogService.listBlog(5, 1, null, true);
         modelMap.addAttribute("blogList", blogModelPageList);
         modelMap.addAttribute("pageCount", blogModelPageList.getTotalPages());
         modelMap.addAttribute("currentPage", 1);
 
         PageList<Tag> tagPageList = tagService.listTag(5, 1);
-        modelMap.addAttribute("tagList",tagPageList);
+        modelMap.addAttribute("tagList", tagPageList);
 
-        modelMap.addAttribute("rootPath",getIp());
+        modelMap.addAttribute("rootPath", getIp());
         logger.debug("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         logger.error("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
         logger.trace("acccccccccccccccccccccccccc");
@@ -60,72 +60,72 @@ public class IndexController {
     }
 
     @RequestMapping("page/{currentPage}")
-    public String getIndexByPage(@PathVariable  String currentPage,ModelMap modelMap){
-        if(!ValidationUtil.validationInteger(currentPage)){
+    public String getIndexByPage(@PathVariable String currentPage, ModelMap modelMap) {
+        if (!ValidationUtil.validationInteger(currentPage)) {
             return "404.html";
         }
-        PageList<BlogModel> blogModelPageList = blogService.listBlog(5, Integer.valueOf(currentPage),null,true);
+        PageList<BlogModel> blogModelPageList = blogService.listBlog(5, Integer.valueOf(currentPage), null, true);
         modelMap.addAttribute("blogList", blogModelPageList);
         modelMap.addAttribute("pageCount", blogModelPageList.getTotalPages());
         modelMap.addAttribute("currentPage", currentPage);
 
         PageList<Tag> tagPageList = tagService.listTag(5, 1);
-        modelMap.addAttribute("tagList",tagPageList);
+        modelMap.addAttribute("tagList", tagPageList);
 
-        modelMap.addAttribute("rootPath",getIp());
+        modelMap.addAttribute("rootPath", getIp());
         return "index.html";
     }
 
     @RequestMapping("tag/{tagName}/{currentPage}")
-    public String getIndexByTag(@PathVariable String tagName,@PathVariable String currentPage, ModelMap modelMap){
-        if(!ValidationUtil.validationInteger(currentPage)){
+    public String getIndexByTag(@PathVariable String tagName, @PathVariable String currentPage, ModelMap modelMap) {
+        if (!ValidationUtil.validationInteger(currentPage)) {
             return "404.html";
         }
         Integer currentpage = 1;
-        if(!StringUtil.isEmpty(currentPage)){
+        if (!StringUtil.isEmpty(currentPage)) {
             currentpage = Integer.valueOf(currentPage);
         }
         PageList<BlogModel> blogModelPageList = blogService.listBlog(5, currentpage, tagName, true);
-        modelMap.addAttribute("blogList",blogModelPageList);
+        modelMap.addAttribute("blogList", blogModelPageList);
         modelMap.addAttribute("pageCount", blogModelPageList.getTotalPages());
         modelMap.addAttribute("currentPage", currentPage);
 
         PageList<Tag> tagPageList = tagService.listTag(5, 1);
-        modelMap.addAttribute("tagList",tagPageList);
+        modelMap.addAttribute("tagList", tagPageList);
 
-        modelMap.addAttribute("rootPath",getIp());
+        modelMap.addAttribute("rootPath", getIp());
         return "index.html";
     }
 
     @RequestMapping("/search/{key}")
-    public String searchBlog(@PathVariable String key, ModelMap modelMap){
+    public String searchBlog(@PathVariable String key, ModelMap modelMap) {
         PageList<BlogModel> blogModelPageList = blogService.searchBlog(key, 6, 1, true);
 
-        modelMap.addAttribute("blogList",blogModelPageList);
+        modelMap.addAttribute("blogList", blogModelPageList);
         modelMap.addAttribute("pageCount", blogModelPageList.getTotalPages());
         modelMap.addAttribute("currentPage", 1);
 
         PageList<Tag> tagPageList = tagService.listTag(5, 1);
-        modelMap.addAttribute("tagList",tagPageList);
+        modelMap.addAttribute("tagList", tagPageList);
         return "index.html";
     }
 
     @RequestMapping("blog/{id}")
     public String getBlog(@PathVariable String id, ModelMap modelMap) {
-        if(!ValidationUtil.validationInteger(id)){
+        if (!ValidationUtil.validationInteger(id)) {
             return "404.html";
         }
         Blog blog = blogService.getBlogById(id);
-        if(blog==null){
+        if (blog == null) {
             return "404.html";
         }
-        BlogModel blogModel = new BlogModel(blog,false);
+        BlogModel blogModel = new BlogModel(blog, false);
         modelMap.addAttribute("blog", blogModel);
 
         PageList<Tag> tagPageList = tagService.listTag(5, 1);
-        modelMap.addAttribute("tagList",tagPageList);
+        modelMap.addAttribute("tagList", tagPageList);
 
-        modelMap.addAttribute("rootPath",getIp());
+        modelMap.addAttribute("rootPath", getIp());
         return "single.html";
     }
 

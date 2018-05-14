@@ -35,9 +35,8 @@
           <element id="library" level="project" name="Gradle: taglibs:standard:1.1.2" />
           <element id="library" level="project" name="Gradle: org.freemarker:freemarker:2.3.23" />
           <element id="library" level="project" name="Gradle: org.apache.commons:commons-lang3:3.4" />
-          <element id="library" level="project" name="Gradle: org.logback-extensions:logback-ext-spring:0.1.4" />
-          <element id="library" level="project" name="Gradle: ch.qos.logback:logback-classic:1.1.1" />
-          <element id="library" level="project" name="Gradle: org.slf4j:slf4j-api:1.7.25" />
+          <element id="library" level="project" name="Gradle: org.apache.logging.log4j:log4j-core:2.9.1" />
+          <element id="library" level="project" name="Gradle: org.apache.logging.log4j:log4j-api:2.9.1" />
           <element id="library" level="project" name="Gradle: org.apache.httpcomponents:httpclient:4.5.2" />
           <element id="library" level="project" name="Gradle: aopalliance:aopalliance:1.0" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-expression:4.2.4.RELEASE" />
@@ -47,8 +46,7 @@
           <element id="library" level="project" name="Gradle: org.apache.httpcomponents:httpcore:4.4.4" />
           <element id="library" level="project" name="Gradle: commons-logging:commons-logging:1.2" />
           <element id="library" level="project" name="Gradle: commons-codec:commons-codec:1.9" />
-          <element id="library" level="project" name="Gradle: ch.qos.logback:logback-core:1.1.1" />
-          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.25/f8c32b13ff142a513eeb5b6330b1588dcb2c0461/jcl-over-slf4j-1.7.25.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-web/2.9.1/e7c76a3b307317924a138135c1ecb28245891bd1/log4j-web-2.9.1.jar" />
         </element>
       </element>
     </root>
