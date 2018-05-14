@@ -46,7 +46,7 @@
         <property name="basePackage" value="com.zheng.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
     </bean>
-
+    <bean id="bigDataCollectionServiceImpl"  class="com.zheng.logic.impl.BigDataCollectionServiceImpl" ></bean>
 
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx
         <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

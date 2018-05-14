@@ -51,7 +51,7 @@ public class IndexController {
         modelMap.addAttribute("tagList", tagPageList);
 
         modelMap.addAttribute("rootPath", getIp());
-        logger.info("getIndex");
+        logger.debug("getIndex");
         return "index.html";
     }
 
