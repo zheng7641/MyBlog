@@ -19,8 +19,9 @@
 	    <script src="${rootPath!}/statics/js/bootstrap.min.js"></script>
 	    <script src="${rootPath!}/statics/js/pace.min.js"></script>
 	    <script src="${rootPath!}/statics/js/modernizr.custom.js"></script>
-
 		<script src="${rootPath!}/statics/js/script.js"></script>
+		<script src="${rootPath!}/statics/js/common.js"></script>
+        <script src="${rootPath!}/statics/js/ua-device.js"></script>
 	</head>
 
 	<body>
@@ -183,12 +184,13 @@
 						}
                     }
                 })
+
+				sendAction("${rootPath!}");
             });
 
             function test()
             {
                 document.getElementsById("searchform").submit();
-                alert(11);
             }
 		</script>
 	</body>

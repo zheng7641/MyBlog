@@ -3,9 +3,7 @@ package com.zheng.service.impl;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
@@ -14,6 +12,7 @@ import java.io.IOException;
 /**
  * @author zhengct on 2018/4/27
  */
+@SuppressWarnings("deprecation")
 public class HttpClientTest {
 
     public static void main(String[] args) throws Exception {

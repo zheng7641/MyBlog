@@ -82,7 +82,7 @@
         <filter-class>com.zheng.common.filter.ActionFilter</filter-class>
         <init-param>
             <param-name>excludes</param-name>
-            <param-value>.css;.js;.png;.jpg;.gif;</param-value>
+            <param-value>.css;.js;.png;.jpg;.gif;.ico;.woff2;</param-value>
         </init-param>
     </filter>
     <filter-mapping>
