@@ -18,12 +18,14 @@ public class ActionInfo {
     private String viewCode;
     //后继页面码
     private String nextViewCode;
+    //当前分页值
+    private Integer viewPage;
+    //后继分页值
+    private Integer nextViewPage;
     //操作分类
     private String optType;
     //操作码
     private String optCode;
-    //操作关键字
-    private String optKey;
     //操作时间
     private Date optDate;
 
@@ -43,6 +45,14 @@ public class ActionInfo {
     private String phone;
 
     private String SPLIT_STR = "\t";
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public String getIp() {
         return ip;
@@ -68,6 +78,22 @@ public class ActionInfo {
         this.nextViewCode = nextViewCode;
     }
 
+    public Integer getViewPage() {
+        return viewPage;
+    }
+
+    public void setViewPage(Integer viewPage) {
+        this.viewPage = viewPage;
+    }
+
+    public Integer getNextViewPage() {
+        return nextViewPage;
+    }
+
+    public void setNextViewPage(Integer nextViewPage) {
+        this.nextViewPage = nextViewPage;
+    }
+
     public String getOptType() {
         return optType;
     }
@@ -82,14 +108,6 @@ public class ActionInfo {
 
     public void setOptCode(String optCode) {
         this.optCode = optCode;
-    }
-
-    public String getOptKey() {
-        return optKey;
-    }
-
-    public void setOptKey(String optKey) {
-        this.optKey = optKey;
     }
 
     public Date getOptDate() {
@@ -156,32 +174,25 @@ public class ActionInfo {
         this.phone = phone;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     @Override
     public String toString() {
         return new StringBuilder()
-                .append("url:"+ StringUtil.checkString(url,false,"")).append(SPLIT_STR)
-                .append("ip:"+ StringUtil.checkString(ip,false,"")).append(SPLIT_STR)
-                .append("viewCode:"+ StringUtil.checkString(viewCode,false,"")).append(SPLIT_STR)
-                .append("nextViewCode:"+ StringUtil.checkString(nextViewCode,false,"")).append(SPLIT_STR)
-                .append("optType:"+ StringUtil.checkString(optType,false,"")).append(SPLIT_STR)
-                .append("optCode:"+ StringUtil.checkString(optCode,false,"")).append(SPLIT_STR)
-                .append("optKey:"+ StringUtil.checkString(optKey,false,"")).append(SPLIT_STR)
-                .append("optDate:"+ DateUtil.toString(optDate,"yyyy-MM-dd hh:mm:ss.SSS")).append(SPLIT_STR)
-                .append("browserName:"+ StringUtil.checkString(browserName,false,"")).append(SPLIT_STR)
-                .append("browserVer:"+ StringUtil.checkString(browserVer,false,"")).append(SPLIT_STR)
-                .append("osName:"+ StringUtil.checkString(osName,false,"")).append(SPLIT_STR)
-                .append("osVersion:"+ StringUtil.checkString(osVersion,false,"")).append(SPLIT_STR)
-                .append("client:"+ StringUtil.checkString(client,false,"")).append(SPLIT_STR)
-                .append("manufacturer:"+ StringUtil.checkString(manufacturer,false,"")).append(SPLIT_STR)
-                .append("phone:"+ StringUtil.checkString(phone,false,""))
+                .append("url:").append( StringUtil.checkString(url,false,"")).append(SPLIT_STR)
+                .append("ip:").append( StringUtil.checkString(ip,false,"")).append(SPLIT_STR)
+                .append("viewCode:").append( StringUtil.checkString(viewCode,false,"")).append(SPLIT_STR)
+                .append("nextViewCode:").append( StringUtil.checkString(nextViewCode,false,"")).append(SPLIT_STR)
+                .append("viewPage:").append( viewPage==null?"":viewPage).append(SPLIT_STR)
+                .append("nextViewPage:").append( nextViewPage==null?"":nextViewPage).append(SPLIT_STR)
+                .append("optType:").append( StringUtil.checkString(optType,false,"")).append(SPLIT_STR)
+                .append("optCode:").append( StringUtil.checkString(optCode,false,"")).append(SPLIT_STR)
+                .append("optDate:").append( DateUtil.toString(optDate,"yyyy-MM-dd hh:mm:ss.SSS")).append(SPLIT_STR)
+                .append("browserName:").append( StringUtil.checkString(browserName,false,"")).append(SPLIT_STR)
+                .append("browserVer:").append( StringUtil.checkString(browserVer,false,"")).append(SPLIT_STR)
+                .append("osName:").append( StringUtil.checkString(osName,false,"")).append(SPLIT_STR)
+                .append("osVersion:").append( StringUtil.checkString(osVersion,false,"")).append(SPLIT_STR)
+                .append("client:").append( StringUtil.checkString(client,false,"")).append(SPLIT_STR)
+                .append("manufacturer:").append( StringUtil.checkString(manufacturer,false,"")).append(SPLIT_STR)
+                .append("phone:").append( StringUtil.checkString(phone,false,""))
                 .toString();
     }
 }

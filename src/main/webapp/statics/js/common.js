@@ -13,9 +13,9 @@ function getIp(rootPath) {
     return ip;
 }
 
-function sendAction(rootPath,url) {
+function sendAction(rootPath,url,viewCode,nextViewCode,viewPage,nextViewPage,optType,optCode) {
     var output = new uaDevice(navigator.userAgent);
-    var browserName = output.browser.name; //
+    var browserName = output.browser.name;
     var browserVer = output.browser.version.original;
     var osName = output.os.name;
     var osVersion = output.os.version.original;
@@ -26,11 +26,13 @@ function sendAction(rootPath,url) {
     var actionInfo = {
         url:url,
         ip:getIp(rootPath),
-        viewCode:"viewCode",
-        nextViewCode:"nextViewCode",
-        optType:1,
-        optCode:"optCode",
-        optKey:"optKey",
+        viewCode:viewCode,
+        nextViewCode:nextViewCode,
+        viewPage:viewPage,
+        nextViewPage:nextViewPage,
+        optType:optType,
+        optCode:optCode,
+
         browserName:browserName,
         browserVer:browserVer,
         osName:osName,
@@ -39,11 +41,6 @@ function sendAction(rootPath,url) {
         manufacturer:manufacturer,
         phone:phone
     }
-
-
-    /*$.post(rootPath+"/action/actionInfo",JSON.stringify(actionInfo),function(result){
-        $("span").html(result);
-    });*/
 
     var actionStr = JSON.stringify(actionInfo);
 

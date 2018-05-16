@@ -176,15 +176,22 @@
                         var tagName = "${tagName!}"
 						var searchName = "${searchName!}"
                         if(tagName!=null&&tagName!=""){
+                            sendAction("${rootPath!}",url,"index","index",currentPage,p,"1","pageTag");
                             window.location.href="${rootPath!}/tag/"+tagName+"/"+p;
 						}else {
+                            sendAction("${rootPath!}",url,"index","index",currentPage,p,"1","pageIndex");
                             window.location.href="${rootPath!}/page/"+p;
 						}
                     }
                 })
-
+				var currentPage = ${currentPage!}
+				var tagName = "${tagName!}"
 				var url = window.location.href;
-				sendAction("${rootPath!}",url);
+                if(tagName!=null&&tagName!=""){
+                    sendAction("${rootPath!}",url,"index","index",currentPage,currentPage,"0","openTag");
+                }else{
+                    sendAction("${rootPath!}",url,"index","index",currentPage,currentPage,"0","openIndex");
+				}
             });
 
             function test()
