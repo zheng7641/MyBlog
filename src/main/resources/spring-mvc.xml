@@ -37,6 +37,14 @@
         </property>
     </bean>
 
+    <!--&lt;!&ndash;参数json转对象&ndash;&gt;
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>-->
+
     <mvc:resources mapping="/css/**" location="/statics/css/"/>
     <mvc:resources mapping="/img/**" location="/statics/img/"/>
     <mvc:resources mapping="/js/**" location="/statics/js/"/>

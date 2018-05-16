@@ -1,20 +1,19 @@
 function getIp(rootPath) {
     var ip = "";
-    // $.ajax({
-    //     url: rootPath + "/action/ip",
-    //     dataType: 'json',
-    //     crossDomain: true
-    // });
-    $.post(rootPath + "/action/ip",{suggest:""},function(result){
-        ip = result;
+    $.ajax({
+        type: 'POST',
+        url: rootPath + "/action/ip",
+        async:false,
+        dataType: 'json',
+        crossDomain: true,
+        success:function(result) {
+            ip = result.data.ip;
+        }
     });
-    // $.get(rootPath + "/action/ip", function(result){
-    //     ip = result;
-    // });
     return ip;
 }
 
-function sendAction(rootPath) {
+function sendAction(rootPath,url) {
     var output = new uaDevice(navigator.userAgent);
     var browserName = output.browser.name; //
     var browserVer = output.browser.version.original;
@@ -24,30 +23,36 @@ function sendAction(rootPath) {
     var manufacturer = output.device.manufacturer;
     var phone = output.device.model;
 
-    var actionInfo = new Object();
-    actionInfo.ip = getIp(rootPath);
-    actionInfo.viewCode = "viewCode";
-    actionInfo.nextViewCode = "nextViewCode";
-    actionInfo.optType = 1;
-    actionInfo.optCode = "optCode"
-    actionInfo.optKey = "optKey";
-    actionInfo.browserName = browserVer;
-    actionInfo.browserVer = browserVer;
-    actionInfo.osName = osName;
-    actionInfo.osVersion = osVersion;
-    actionInfo.client = client;
-    actionInfo.manufacturer = manufacturer;
-    actionInfo.phone = phone;
+    var actionInfo = {
+        url:url,
+        ip:getIp(rootPath),
+        viewCode:"viewCode",
+        nextViewCode:"nextViewCode",
+        optType:1,
+        optCode:"optCode",
+        optKey:"optKey",
+        browserName:browserName,
+        browserVer:browserVer,
+        osName:osName,
+        osVersion:osVersion,
+        client:client,
+        manufacturer:manufacturer,
+        phone:phone
+    }
+
 
     /*$.post(rootPath+"/action/actionInfo",JSON.stringify(actionInfo),function(result){
         $("span").html(result);
     });*/
 
+    var actionStr = JSON.stringify(actionInfo);
+
     $.ajax({
         type: 'POST',
         url: rootPath + "/action/actionInfo",
-        data: JSON.stringify(actionInfo),
+        async:false,
         dataType: 'json',
-        crossDomain: true
+        crossDomain: true,
+        data: {'actionStr':actionStr}
     });
 }

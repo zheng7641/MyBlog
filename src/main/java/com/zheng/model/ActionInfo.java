@@ -1,5 +1,7 @@
 package com.zheng.model;
 
+import com.zheng.common.util.DateUtil;
+import com.zheng.common.util.StringUtil;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
@@ -8,6 +10,8 @@ import java.util.Date;
  * @author zhengct on 2018/5/14
  */
 public class ActionInfo {
+    //访问url
+    private String url;
     //用户ip
     private String ip;
     //当前页面码
@@ -15,7 +19,7 @@ public class ActionInfo {
     //后继页面码
     private String nextViewCode;
     //操作分类
-    private Integer optType;
+    private String optType;
     //操作码
     private String optCode;
     //操作关键字
@@ -37,8 +41,8 @@ public class ActionInfo {
     private String manufacturer;
     //手机型号
     private String phone;
-    //访问url
-    private String url;
+
+    private String SPLIT_STR = "\t";
 
     public String getIp() {
         return ip;
@@ -64,11 +68,11 @@ public class ActionInfo {
         this.nextViewCode = nextViewCode;
     }
 
-    public Integer getOptType() {
+    public String getOptType() {
         return optType;
     }
 
-    public void setOptType(Integer optType) {
+    public void setOptType(String optType) {
         this.optType = optType;
     }
 
@@ -162,22 +166,22 @@ public class ActionInfo {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .append("ip", ip)
-                .append("viewCode", viewCode)
-                .append("nextViewCode", nextViewCode)
-                .append("optType", optType)
-                .append("optCode", optCode)
-                .append("optKey", optKey)
-                .append("optDate", optDate)
-                .append("browserName", browserName)
-                .append("browserVer", browserVer)
-                .append("osName", osName)
-                .append("osVersion", osVersion)
-                .append("client", client)
-                .append("manufacturer", manufacturer)
-                .append("phone", phone)
-                .append("url", url)
+        return new StringBuilder()
+                .append("url:"+ StringUtil.checkString(url,false,"")).append(SPLIT_STR)
+                .append("ip:"+ StringUtil.checkString(ip,false,"")).append(SPLIT_STR)
+                .append("viewCode:"+ StringUtil.checkString(viewCode,false,"")).append(SPLIT_STR)
+                .append("nextViewCode:"+ StringUtil.checkString(nextViewCode,false,"")).append(SPLIT_STR)
+                .append("optType:"+ StringUtil.checkString(optType,false,"")).append(SPLIT_STR)
+                .append("optCode:"+ StringUtil.checkString(optCode,false,"")).append(SPLIT_STR)
+                .append("optKey:"+ StringUtil.checkString(optKey,false,"")).append(SPLIT_STR)
+                .append("optDate:"+ DateUtil.toString(optDate,"yyyy-MM-dd hh:mm:ss.SSS")).append(SPLIT_STR)
+                .append("browserName:"+ StringUtil.checkString(browserName,false,"")).append(SPLIT_STR)
+                .append("browserVer:"+ StringUtil.checkString(browserVer,false,"")).append(SPLIT_STR)
+                .append("osName:"+ StringUtil.checkString(osName,false,"")).append(SPLIT_STR)
+                .append("osVersion:"+ StringUtil.checkString(osVersion,false,"")).append(SPLIT_STR)
+                .append("client:"+ StringUtil.checkString(client,false,"")).append(SPLIT_STR)
+                .append("manufacturer:"+ StringUtil.checkString(manufacturer,false,"")).append(SPLIT_STR)
+                .append("phone:"+ StringUtil.checkString(phone,false,""))
                 .toString();
     }
 }

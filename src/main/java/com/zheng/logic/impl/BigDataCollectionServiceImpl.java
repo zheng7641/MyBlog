@@ -14,6 +14,6 @@ public class BigDataCollectionServiceImpl implements BigDataCollectionService {
 
     @Override
     public void DataImport(ActionInfo actionInfo) {
-        logger.info(actionInfo.toString());
+        logger.info(actionInfo);
     }
 }

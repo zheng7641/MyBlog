@@ -1,17 +1,22 @@
 package com.zheng.common.account;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zheng.common.util.IpUtil;
+import com.zheng.common.util.JacksonUtil;
 import com.zheng.logic.BigDataCollectionService;
 import com.zheng.model.ActionInfo;
 import com.zheng.model.OperResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.apache.logging.log4j.message.MapMessage.MapFormat.JSON;
 
 /**
  * @author zhengct on 2018/5/15
@@ -41,7 +46,9 @@ public class ActionController {
 
     @RequestMapping("/actionInfo")
     @ResponseBody
-    public String getAction(ActionInfo actionInfo){
+    public String getAction(@RequestParam("actionStr") String actionStr) throws IOException {
+        ActionInfo actionInfo = JacksonUtil.readValue(actionStr, ActionInfo.class);
+        actionInfo.setOptDate(new Date());
         bigDataCollectionService.DataImport(actionInfo);
         return "success";
     }

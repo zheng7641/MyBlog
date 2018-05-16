@@ -25,6 +25,8 @@
 	    <script src="${rootPath!}/statics/js/bootstrap.min.js"></script>
 	    <script src="${rootPath!}/statics/js/pace.min.js"></script>
 	    <script src="${rootPath!}/statics/js/modernizr.custom.js"></script>
+		<script src="${rootPath!}/statics/js/common.js"></script>
+		<script src="${rootPath!}/statics/js/ua-device.js"></script>
 	</head>
 
 	<body id="single">
@@ -130,5 +132,11 @@
 		</div>
 
 	<script src="${rootPath!}/statics/js/script.js"></script>
+		<script>
+            $(document).ready(function(){
+                var url = window.location.href;
+                sendAction("${rootPath!}",url);
+            });
+		</script>
 	</body>
 </html>

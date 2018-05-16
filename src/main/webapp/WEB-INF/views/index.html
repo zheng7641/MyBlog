@@ -177,15 +177,14 @@
 						var searchName = "${searchName!}"
                         if(tagName!=null&&tagName!=""){
                             window.location.href="${rootPath!}/tag/"+tagName+"/"+p;
-						}else /*if(search!=null&&searchName!=""){
-                            window.location.href="${rootPath!}/page/"+p;
-						}else*/{
+						}else {
                             window.location.href="${rootPath!}/page/"+p;
 						}
                     }
                 })
 
-				sendAction("${rootPath!}");
+				var url = window.location.href;
+				sendAction("${rootPath!}",url);
             });
 
             function test()

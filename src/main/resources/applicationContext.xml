@@ -48,6 +48,24 @@
     </bean>
     <bean id="bigDataCollectionServiceImpl"  class="com.zheng.logic.impl.BigDataCollectionServiceImpl" ></bean>
 
+    <!--请求json转对象-->
+   <!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="mappingJacksonHttpMessageConverter" />
+            </list>
+        </property>
+    </bean>
+    <bean id="mappingJacksonHttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+                <value>application/json;charset=utf-8</value>
+            </list>
+        </property>
+    </bean>-->
+
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx
         <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" /> </bean> -->
