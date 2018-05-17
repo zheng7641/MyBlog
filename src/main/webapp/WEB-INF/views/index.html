@@ -30,7 +30,7 @@
 				<div class="row">
 					<div class="col-md-4 col-sm-5 col-xs-8">
 						<div class="logo">
-							<h1><a href="/"><b>Z</b> &amp; CT</a></h1>
+							<h1><a href="javascript:void(0)" onclick="tClick('title')"><b>Z</b> &amp; CT</a></h1>
 						</div>
 					</div><!-- col-md-4 -->
 					<div class="col-md-8 col-sm-7 col-xs-4">
@@ -43,15 +43,15 @@
 
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   								<ul class="nav navbar-nav navbar-right">
-    								<li class="cl-effect-11"><a href="/" data-hover="Home">Home</a></li>
+    								<li class="cl-effect-11"><a href="javascript:void(0)" data-hover="Home" onclick="tClick('home')">Home</a></li>
     								<!--<li class="cl-effect-11"><a href="/blog/all" data-hover="Blog">Blog</a></li>-->
-    								<li class="cl-effect-11"><a href="/about/" data-hover="About">About</a></li>
+    								<li class="cl-effect-11"><a href="javascript:void(0)" data-hover="About" onclick="tClick('about')">About</a></li>
     								<!--<li class="cl-effect-11"><a href="/contact/" data-hover="Contact">Contact</a></li>-->
   								</ul>
 							</div><!-- /.navbar-collapse -->
 						</nav>
 						<div id="header-search-box">
-							<a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
+							<a id="search-menu" href=""><span id="search-icon" class="ion-ios-search-strong"></span></a>
 							<div id="search-form" class="search-form">
 								<form id="searchform" role="search" method="get" action="/search/">
 									<input type="search" placeholder="Search" required>
@@ -72,22 +72,22 @@
 						<article class="post post-1">
 							<header class="entry-header">
 								<h1 class="entry-title">
-									<a href="/blog/${blog.id}">${blog.title}</a>
+									<a href="javascript:void(0)" onclick="aClick('${blog.id}','blog','title')">${blog.title}</a>
 								</h1>
 								<div class="entry-meta">
-									<span class="post-category"><a href="/tag/${blog.tagName!}/1" style="text-decoration:underline;">${blog.tagName}</a></span>
+									<span class="post-category"><a href="javascript:void(0)" onclick="aClick('${blog.tagName!}','tag','blog')" style="text-decoration:underline;">${blog.tagName}</a></span>
 
-									<span class="post-date"><a href="#" style="cursor: default;"><time class="entry-date">${blog.createTime}</time></a></span>
+									<span class="post-date"><a href="javascript:void(0)" style="cursor: default;"><time class="entry-date">${blog.createTime}</time></a></span>
 
-									<!--<span class="post-author"><a href="#">$!!!blog.author}</a></span>-->
+									<!--<span class="post-author"><a href="">$!!!blog.author}</a></span>-->
 
-									<!--<span class="comments-link"><a href="#">4 Comments</a></span>-->
+									<!--<span class="comments-link"><a href="">4 Comments</a></span>-->
 								</div>
 							</header>
 							<div class="entry-content clearfix">
 								<p>${blog.content}</p>
 								<div class="read-more cl-effect-14">
-									<a href="/blog/${blog.id}" class="more-link">阅读全文 <span class="meta-nav">→</span></a>
+									<a href="javascript:void(0)" class="more-link" onclick="aClick('${blog.id}','blog','detail')">阅读全文 <span class="meta-nav">→</span></a>
 								</div>
 							</div>
 						</article>
@@ -103,13 +103,13 @@
 							<h3 class="widget-title">Recent Posts</h3>
 							<ul>
 								<li>
-									<a href="#">Adaptive Vs. Responsive Layouts And Optimal Text Readability</a>
+									<a href="">Adaptive Vs. Responsive Layouts And Optimal Text Readability</a>
 								</li>
 								<li>
-									<a href="#">Web Design is 95% Typography</a>
+									<a href="">Web Design is 95% Typography</a>
 								</li>
 								<li>
-									<a href="#">Paper by FiftyThree</a>
+									<a href="">Paper by FiftyThree</a>
 								</li>
 							</ul>
 						</div>-->
@@ -117,13 +117,13 @@
 							<h3 class="widget-title">Archives</h3>
 							<ul>
 								<li>
-									<a href="#">November 2014</a>
+									<a href="">November 2014</a>
 								</li>
 								<li>
-									<a href="#">September 2014</a>
+									<a href="">September 2014</a>
 								</li>
 								<li>
-									<a href="#">January 2013</a>
+									<a href="">January 2013</a>
 								</li>
 							</ul>
 						</div>-->
@@ -134,7 +134,7 @@
 								<#if tagList??>
 								<#list tagList.datalist as tag>
 								<li>
-									<a href="/tag/${tag.name}/1">${tag.name}</a>
+									<a href="javascript:void(0)" onclick="aClick('${tag.name!}','tag','barTag')" >${tag.name!}</a>
 								</li>
 								</#list>
 								</#if>
@@ -176,7 +176,7 @@
                         var tagName = "${tagName!}"
 						var searchName = "${searchName!}"
                         if(tagName!=null&&tagName!=""){
-                            sendAction("${rootPath!}",url,"index","index",currentPage,p,"1","pageTag");
+                            sendAction("${rootPath!}",url,"tag","tag",currentPage,p,"1","pageTag");
                             window.location.href="${rootPath!}/tag/"+tagName+"/"+p;
 						}else {
                             sendAction("${rootPath!}",url,"index","index",currentPage,p,"1","pageIndex");
@@ -184,11 +184,11 @@
 						}
                     }
                 })
-				var currentPage = ${currentPage!}
+				var currentPage = "${currentPage!}";
 				var tagName = "${tagName!}"
 				var url = window.location.href;
                 if(tagName!=null&&tagName!=""){
-                    sendAction("${rootPath!}",url,"index","index",currentPage,currentPage,"0","openTag");
+                    sendAction("${rootPath!}",url,"tag","tag",currentPage,currentPage,"0","openTag");
                 }else{
                     sendAction("${rootPath!}",url,"index","index",currentPage,currentPage,"0","openIndex");
 				}
@@ -198,6 +198,54 @@
             {
                 document.getElementsById("searchform").submit();
             }
+
+            //value 博客标签 博客id
+			//aType tag blog 点击类型
+			//where tag: blog barTag   blog:title detail 点击位置
+            function aClick (value,aType,where) {
+                var url = window.location.href;
+                var tagName = "${tagName!}";
+                var currentPage = "${currentPage!}";
+                if(aType=="tag"){
+                    if(tagName!=null&&tagName!=""){
+						if(where=="blog"){
+                            sendAction("${rootPath!}",url,"tag","tag",currentPage,"1","1","clickTag");//标签页内部跳转
+						}else if(where=="barTag"){
+                            sendAction("${rootPath!}",url,"tag","tag",currentPage,"1","1","clickBarTag");//标签页内部跳转
+						}
+                    }else{
+                        if(where=="blog"){
+                            sendAction("${rootPath!}",url,"index","tag",currentPage,"1","1","clickTag");//标签页内部跳转
+                        }else if(where=="barTag"){
+                            sendAction("${rootPath!}",url,"index","tag",currentPage,"1","1","clickBarTag");//标签页内部跳转
+                        }
+					}
+                    window.location = "${rootPath!}/tag/"+value+"/1 ";
+				}else if(aType=="blog"){
+                    if(where=="title"){
+                        sendAction("${rootPath!}",url,"index","blog",currentPage,value,"1","clickTitle");//主页跳博客页
+					}else if(where=="detail"){
+                        sendAction("${rootPath!}",url,"index","blog",currentPage,value,"1","clickDetail");//主页跳博客页
+					}
+                    window.location = "${rootPath!}/blog/"+value;
+				}
+            }
+
+            function tClick(where){
+                var url = window.location.href;
+                var currentPage = "${currentPage!}";
+                if(where=="title"){
+                    sendAction("${rootPath!}",url,"index","index",currentPage,"1","1","clickIndexTitle");
+                    window.location = "${rootPath!}/";
+				}else if(where=="home"){
+                    sendAction("${rootPath!}",url,"index","index",currentPage,"1","1","clickIndexBar");
+                    window.location = "${rootPath!}/";
+				}else if(where=="about"){
+                    sendAction("${rootPath!}",url,"index","about",currentPage,"1","1","clickAboutBar");
+                    window.location = "${rootPath!}/about";
+				}
+
+			}
 		</script>
 	</body>
 </html>

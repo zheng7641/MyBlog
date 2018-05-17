@@ -35,7 +35,7 @@
 				<div class="row">
 					<div class="col-md-4 col-sm-5 col-xs-8">
 						<div class="logo">
-							<h1><a href="/"><b>Z</b> &amp; H</a></h1>
+							<h1><a href="javascript:void(0)" onclick="tClick('title')"><b>Z</b> &amp; CT</a></h1>
 						</div>
 					</div><!-- col-md-4 -->
 					<div class="col-md-8 col-sm-7 col-xs-4">
@@ -48,15 +48,15 @@
 
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   								<ul class="nav navbar-nav navbar-right">
-    								<li class="cl-effect-11"><a href="/" data-hover="Home">Home</a></li>
+									<li class="cl-effect-11"><a href="javascript:void(0)" data-hover="Home" onclick="tClick('home')">Home</a></li>
     								<!--<li class="cl-effect-11"><a href="/NBlog/blog/all" data-hover="Blog">Blog</a></li>-->
-    								<li class="cl-effect-11"><a href="/NBlog/about/" data-hover="About">About</a></li>
+									<li class="cl-effect-11"><a href="javascript:void(0)" data-hover="About" onclick="tClick('about')">About</a></li>
     								<!--<li class="cl-effect-11"><a href="/NBlog/contact/" data-hover="Contact">Contact</a></li>-->
   								</ul>
 							</div><!-- /.navbar-collapse -->
 						</nav>
 						<div id="header-search-box">
-							<a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
+							<a id="search-menu" href=""><span id="search-icon" class="ion-ios-search-strong"></span></a>
 							<div id="search-form" class="search-form">
 								<form role="search" method="get" id="searchform" action="#">
 									<input type="search" placeholder="Search" required>
@@ -77,13 +77,13 @@
 							<header class="entry-header">
 								<h1 class="entry-title">${blog.title!}</h1>
 								<div class="entry-meta">
-									<span class="post-category"><a href="/tag/${blog.tagName!}/1">${blog.tagName!}</a></span>
+									<span class="post-category"><a href="javascript:void(0)" onclick="aClick('${blog.tagName!}','blog')">${blog.tagName}</a></span>
+
+									<span class="post-date"><a href=""><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">${blog.createTime}</time></a></span>
 			
-									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">${blog.createTime}</time></a></span>
+									<!--<span class="post-author"><a href="">Albert Einstein</a></span>
 			
-									<!--<span class="post-author"><a href="#">Albert Einstein</a></span>
-			
-									<span class="comments-link"><a href="#">4 Comments</a></span>-->
+									<span class="comments-link"><a href="">4 Comments</a></span>-->
 								</div>
 							</header>
 							<div class="entry-content clearfix">
@@ -98,7 +98,7 @@
 								<#if tagList??>
 								<#list tagList.datalist as tag>
 								<li>
-									<a href="/tag/${tag.name}/1">${tag.name}</a>
+									<a href="javascript:void(0)" onclick="aClick('${tag.name!}','barTag')">${tag.name!}</a>
 								</li>
 								</#list>
 								</#if>
@@ -135,8 +135,38 @@
 		<script>
             $(document).ready(function(){
                 var url = window.location.href;
-                sendAction("${rootPath!}",url);
+                sendAction("${rootPath!}",url,"blog","blog","${blog.id!}","${blog.id!}","0","openBlog");
             });
+
+            //value 博客标签 博客id
+            //aType tag blog 点击类型
+            //where tag: blog barTag   blog:title detail 点击位置
+            function aClick (value,where) {
+                var url = window.location.href;
+				if(where=="blog"){
+					sendAction("${rootPath!}",url,"blog","tag","1","1","1","clickBlogTag");//标签页内部跳转
+				}else if(where=="barTag"){
+					sendAction("${rootPath!}",url,"blog","tag","1","1","1","clickBlogBarTag");//标签页内部跳转
+				}
+                window.location = "${rootPath!}/tag/"+value+"/1 ";
+			}
+
+            function tClick(where){
+                var url = window.location.href;
+                var blogId = "${blog.id!}";
+                if(where=="title"){
+                    sendAction("${rootPath!}",url,"blog","index",blogId,"1","1","clickIndexTitle");
+                    window.location = "${rootPath!}/";
+                }else if(where=="home"){
+                    sendAction("${rootPath!}",url,"blog","index",blogId,"1","1","clickIndexBar");
+                    window.location = "${rootPath!}/";
+                }else if(where=="about"){
+                    sendAction("${rootPath!}",url,"blog","about",blogId,"1","1","clickAboutBar");
+                    window.location = "${rootPath!}/about";
+                }
+
+            }
+
 		</script>
 	</body>
 </html>

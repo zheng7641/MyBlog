@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -49,6 +50,7 @@ public class ActionController {
     public String getAction(@RequestParam("actionStr") String actionStr) throws IOException {
         ActionInfo actionInfo = JacksonUtil.readValue(actionStr, ActionInfo.class);
         actionInfo.setOptDate(new Date());
+        actionInfo.setUrl(URLDecoder.decode(actionInfo.getUrl(),"UTF-8"));
         bigDataCollectionService.DataImport(actionInfo);
         return "success";
     }
