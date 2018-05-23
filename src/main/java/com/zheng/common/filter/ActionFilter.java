@@ -7,8 +7,7 @@ import eu.bitwalker.useragentutils.Browser;
 import eu.bitwalker.useragentutils.OperatingSystem;
 import eu.bitwalker.useragentutils.UserAgent;
 import eu.bitwalker.useragentutils.Version;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -24,7 +23,7 @@ import java.util.Date;
  */
 public class ActionFilter implements Filter {
 
-    private static Logger logger = LogManager.getLogger(ActionFilter.class.getName());
+    private static Logger logger = Logger.getLogger(ActionFilter.class.getName());
     private FilterConfig config;
     private WebApplicationContext context;
     private BigDataCollectionService bigDataCollectionService;

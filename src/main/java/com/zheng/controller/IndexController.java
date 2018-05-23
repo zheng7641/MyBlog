@@ -1,15 +1,14 @@
 package com.zheng.controller;
 
 import com.zheng.base.page.PageList;
+import com.zheng.common.util.StringUtil;
+import com.zheng.common.util.ValidationUtil;
 import com.zheng.entity.Blog;
 import com.zheng.entity.Tag;
 import com.zheng.logic.BlogService;
 import com.zheng.logic.TagService;
 import com.zheng.model.BlogModel;
-import com.zheng.common.util.StringUtil;
-import com.zheng.common.util.ValidationUtil;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,7 +36,7 @@ public class IndexController {
         return "test.html";
     }
 
-    private static Logger logger = LogManager.getLogger(IndexController.class.getName());
+    private static Logger logger = Logger.getLogger(IndexController.class.getName());
 
     //http://localhost:8080
     @RequestMapping("")

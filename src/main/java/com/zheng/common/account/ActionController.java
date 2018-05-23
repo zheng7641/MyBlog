@@ -17,8 +17,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.apache.logging.log4j.message.MapMessage.MapFormat.JSON;
-
 /**
  * @author zhengct on 2018/5/15
  */

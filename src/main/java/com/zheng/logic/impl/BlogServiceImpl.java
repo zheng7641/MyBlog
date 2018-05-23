@@ -11,8 +11,7 @@ import com.zheng.entity.Blog;
 import com.zheng.entity.field.BlogConstants;
 import com.zheng.logic.BlogService;
 import com.zheng.model.BlogModel;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -28,7 +27,7 @@ public class BlogServiceImpl extends BaseServiceImpl implements BlogService {
         return blogDAO;
     }
 
-    private static Logger logger = LogManager.getLogger(BlogServiceImpl.class.getName());
+    private static Logger logger = Logger.getLogger(BlogServiceImpl.class.getName());
 
     public Blog getBlog() {
         Blog byUid = blogDAO.getByUid("1");
