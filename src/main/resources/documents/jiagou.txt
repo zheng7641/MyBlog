@@ -1,0 +1,2 @@
+flume:
+应用 -> os1 os2 -> os3 -> kafka
