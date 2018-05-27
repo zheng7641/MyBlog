@@ -80,6 +80,7 @@
           <element id="library" level="project" name="Gradle: org.apache.commons:commons-compress:1.4.1" />
           <element id="library" level="project" name="Gradle: org.tukaani:xz:1.0" />
           <element id="library" level="project" name="Gradle: commons-collections:commons-collections:3.2.1" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.8.3/65fd012581ded67bc20945d85c32b4598c3a9cf1/jsoup-1.8.3.jar" />
         </element>
       </element>
     </root>
